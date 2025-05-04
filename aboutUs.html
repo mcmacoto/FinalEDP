@@ -3,9 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8b+z4xj5c5e5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Bondi&Bourke</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=League+Spartan:wght@200;600&family=Noto+Sans:wght@500&family=Noto+Rashi+Hebrew:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D35400;
+            --dark: #1C1C1C;
+            --light: #F6F4F1;
+            --text: #1F1F1F;
+            --overlay: rgba(43, 43, 43, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 200;
+            color: var(--text);
+            background: white;
+            line-height: 33px;
+        }
+        
+        /* Header */
+        header {
+            position: relative;
+            height: 240px;
+            background: url('bondibourkehouse.jpg') center/cover;
+            filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay);
+            box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        @font-face {
+            font-family: 'Norwester';
+            src: url('norwester.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Norwester', sans-serif;
+            font-size: 84px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logo .amp {
+            color: #d35400;
+        }
+
+        
+        /* Navigation hovers */
+        nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 113px;
+            z-index: 10;
+        }
+        
+        nav a {
+            color: var(--light);
+            font-family: 'Noto Sans', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 41px;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav a:hover {
+            color: var(--light);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Active page indicator */
+        nav a.active {
+            color: var(--light);
+        }
+        
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        /* Main  */
+        main {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 60px 80px;
+            position: relative;
+            background: var(--light);
+        }
+        
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+        }
+        
+        .section.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .section-image {
+            flex: 1 1 500px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.25);
+        }
+        
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .section-content {
+            flex: 1 1 500px;
+        }
+        
+        /* Heading fonts */
+        h1 {
+            font-family: 'Lobster Two', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 80px;
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-family: 'Lobster Two', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 96px;
+            line-height: 120px;
+            margin-bottom: 40px;
+        }
+        
+        p {
+            font-family: 'League Spartan', sans-serif;
+            font-style: normal;
+            font-weight: 200;
+            font-size: 36px;
+            line-height: 33px;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+        
+        /* Discover Our Menu Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 474px;
+            height: 90px;
+            border-radius: 15px;
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 33px;
+            text-decoration: none;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s;
+            margin-top: 40px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            position: relative;
+            width: 1440px;
+            height: 220px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            border: 4px solid var(--primary);
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        
+        .contact-info {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+        }
+        
+        .social-handles {
+            text-align: right;
+        }
+        
+        .social-handle {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Credits*/
+        .credits {
+            position: relative;
+            width: 1440px;
+            height: 67px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .credits-text {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.15em;
+            color: white;
+            text-align: center;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1480px) {
+            footer, .credits {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            main {
+                padding: 40px;
+            }
+            
+            nav {
+                gap: 60px;
+            }
+            
+            nav a {
+                font-size: 24px;
+            }
+            
+            h1 {
+                font-size: 48px;
+                line-height: 60px;
+            }
+            
+            h2 {
+                font-size: 72px;
+                line-height: 90px;
+            }
+            
+            p {
+                font-size: 24px;
+                line-height: 28px;
+            }
+            
+            .btn {
+                width: 350px;
+                height: 70px;
+                font-size: 28px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .social-handles {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .social-handle {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                gap: 30px;
+            }
+            
+            nav a {
+                font-size: 18px;
+            }
+            
+            h1 {
+                font-size: 36px;
+                line-height: 48px;
+            }
+            
+            h2 {
+                font-size: 48px;
+                line-height: 60px;
+            }
+            
+            p {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            
+            .btn {
+                width: 280px;
+                height: 60px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-overlay"></div>
+        <div class="logo-container">
+            <a href="#" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
+        </div>
+        <nav>
+            <a href="#">HOME</a>
+            <a href="#" class="active">ABOUT US</a>
+            <a href="#">CATALOG</a>
+            <a href="#">FAQ</a>
+            <a href="#">CONTACT</a>
+        </nav>
+    </header>
     
+    <main>
+        <section class="section">
+            <div class="section-image">
+                <img src="bondiTeam.jpg" alt="Bondi & Bourke Staff Picture" style="height: 839px;">
+            </div>
+            <div class="section-content">
+                <h1>Who are we?</h1>
+                <p>At Bondi & Bourke, we offer a modern Australian dining experience led by our award-winning chef, Wade Watson. We take pride in serving a bespoke menu inspired by Australia's favorite dishes in a bright and welcoming space.</p>
+                <p>For more private occasions, our intimate dining rooms accommodate up to 20 guests with full multimedia support. Our signature degustation package delivers a memorable journey through appetizers, mains, desserts, and "the best roast in town," all paired with handpicked wines.</p>
+                <a href="#" class="btn">DISCOVER OUR MENU</a>
+            </div>
+        </section>
+        
+        <section class="section reverse">
+            <div class="section-image">
+                <img src="wadeWatson.jpg" alt="Award-Winning Chef Wade Watson" style="height: 785px;">
+            </div>
+            <div class="section-content">
+                <h2>About us</h2>
+                <p>Bondi & Bourke offers a modern Australian dining experience led by award-winning Chef Wade Watson. In a bright, welcoming space, we serve a bespoke menu inspired by Aussie favorites.</p>
+                <p>Our private dining rooms host up to 20 guests, ideal for intimate events or corporate functions. Guests can enjoy a signature degustation featuring appetizers, mains, desserts, and "the best roast in town," paired with fine wines.</p>
+                <p>Whether it's business or celebration, Bondi & Bourke is the perfect place to gather.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                115 P. Pelayo Street, Poblacion District<br>
+                Davao City, 8000 Davao del Sur<br>
+                Philippines<br>
+                M: 0998-593-3763<br>
+                E: info@bondibourke.com
+            </div>
+            <div class="social-handles">
+                <div class="social-handle">
+                    <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                    Bondi&Bourke Davao
+                </div>
+                <div class="social-handle">
+                    <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                    @bondibourkeph
+                </div>
+                <div class="social-handle">
+                    <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                    @bondibourkeph
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="credits">
+        <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
+    </div>
+</body>
 </html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bondi&Bourke - FAQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=League+Spartan:wght@200;600&family=Noto+Sans:wght@500&family=Noto+Rashi+Hebrew:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D35400;
+            --dark: #1C1C1C;
+            --light: #F6F4F1;
+            --text: #1F1F1F;
+            --overlay: rgba(43, 43, 43, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 200;
+            color: var(--text);
+            background: white;
+            line-height: 33px;
+        }
+        
+        /* Header */
+        header {
+            position: relative;
+            height: 240px;
+            background: url('bondibourkehouse.jpg') center/cover;
+            filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay);
+            box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        @font-face {
+            font-family: 'Norwester';
+            src: url('norwester.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Norwester', sans-serif;
+            font-size: 84px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logo .amp {
+            color: #d35400;
+        }
+
+        
+        /* Navigation */
+        nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 113px;
+            z-index: 10;
+        }
+        
+        nav a {
+            color: var(--light);
+            font-family: 'Noto Sans', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 41px;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav a:hover {
+            color: var(--light);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Active page indicator */
+        nav a.active {
+            color: var(--light);
+        }
+        
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 60px 80px;
+            position: relative;
+            background: var(--light);
+        }
+        
+        /* FAQ Title */
+        .faq-title {
+            font-family: 'Lobster Two', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 80px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text);
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .faq-item {
+            background: var(--dark);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-left: 100px;
+        }
+        
+        .faq-question {
+            font-family: 'Lobster Two', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 40px;
+            color: #D9D9D9;
+            margin-bottom: 20px;
+        }
+        
+        .faq-answer {
+            font-family: 'League Spartan', sans-serif;
+            font-style: normal;
+            font-weight: 200;
+            font-size: 24px;
+            line-height: 28px;
+            color: white;
+        }
+        
+        .question-icon {
+            position: absolute;
+            left: 30px;
+            top: 35px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        /* Footer */
+        footer {
+            width: 100%;
+            height: 220px;
+            background: var(--dark);
+            border: 4px solid var(--primary);
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+        }
+        
+        .social-handles {
+            text-align: right;
+        }
+        
+        .social-handle {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Credits*/
+        .credits {
+            width: 100%;
+            height: 67px;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .credits-text {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.15em;
+            color: white;
+            text-align: center;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 1480px) {
+            .footer-content {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            main {
+                padding: 40px;
+            }
+            
+            nav {
+                gap: 60px;
+            }
+            
+            nav a {
+                font-size: 24px;
+            }
+            
+            .faq-title {
+                font-size: 48px;
+                line-height: 60px;
+            }
+            
+            .faq-question {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            
+            .faq-answer {
+                font-size: 20px;
+                line-height: 24px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .social-handles {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .social-handle {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                gap: 30px;
+            }
+            
+            nav a {
+                font-size: 18px;
+            }
+            
+            .faq-title {
+                font-size: 36px;
+                line-height: 48px;
+            }
+            
+            .faq-question {
+                font-size: 24px;
+                line-height: 30px;
+            }
+            
+            .faq-answer {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            
+            .faq-item {
+                padding: 20px;
+                padding-left: 70px;
+            }
+            
+            .question-icon {
+                left: 15px;
+                top: 25px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-overlay"></div>
+        <div class="logo-container">
+            <a href="index.html" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
+        </div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="aboutUs.html">ABOUT US</a>
+            <a href="catalog.html">CATALOG</a>
+            <a href="faq.html" class="active">FAQ</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h1 class="faq-title">FREQUENTLY ASKED QUESTIONS</h1>
+        
+        <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+                <div class="question-icon">?</div>
+                <h3 class="faq-question">What are your operating hours?</h3>
+                <p class="faq-answer">
+                    We're open daily from 11:00 AM to 9:30 PM, Monday to Sunday. Whether it's a weekday lunch or a weekend dinner, we're ready to serve you.
+                </p>
+            </div>
+            
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <div class="question-icon">?</div>
+                <h3 class="faq-question">Are your dishes Halal-friendly?</h3>
+                <p class="faq-answer">
+                    Most of our menu items are Halal-friendly. However, please note that some dishes may contain pork or pork-derived ingredients. We recommend informing our staff of any dietary preferences or restrictions when ordering.
+                </p>
+            </div>
+            
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <div class="question-icon">?</div>
+                <h3 class="faq-question">Do you offer delivery services?</h3>
+                <p class="faq-answer">
+                    At the moment, we do not offer delivery. However, customers are welcome to place pickup orders if they prefer to enjoy our food at home.
+                </p>
+            </div>
+            
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <div class="question-icon">?</div>
+                <h3 class="faq-question">Do I need a reservation?</h3>
+                <p class="faq-answer">
+                    While walk-ins are welcome, we highly recommend making a reservation, especially on weekends or for large groups, to ensure seating availability.
+                </p>
+            </div>
+            
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <div class="question-icon">?</div>
+                <h3 class="faq-question">What payment methods do you accept?</h3>
+                <p class="faq-answer">
+                    We accept cash, credit/debit cards, and mobile payments (e.g., GCash). Contactless payments are also supported.
+                </p>
+            </div>
+            
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+                <div class="question-icon">?</div>
+                <h3 class="faq-question">Do you accommodate private events or functions?</h3>
+                <p class="faq-answer">
+                    Yes! We have private dining rooms perfect for business functions, intimate celebrations, or exclusive tasting menus. Reach out via our contact page for arrangements.
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                115 P. Pelayo Street, Poblacion District<br>
+                Davao City, 8000 Davao del Sur<br>
+                Philippines<br>
+                M: 0998-593-3763<br>
+                E: info@bondibourke.com
+            </div>
+            <div class="social-handles">
+                <div class="social-handle">
+                    <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                    Bondi&Bourke Davao
+                </div>
+                <div class="social-handle">
+                    <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                    @bondibourkeph
+                </div>
+                <div class="social-handle">
+                    <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                    @bondibourkeph
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="credits">
+        <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
+    </div>
+</body>
+</html>

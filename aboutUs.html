@@ -226,24 +226,22 @@
         
         /* Footer */
         footer {
-            position: relative;
-            width: 1440px;
+            width: 100%;
             height: 220px;
-            left: 50%;
-            transform: translateX(-50%);
             background: var(--dark);
             border: 4px solid var(--primary);
             margin-top: 40px;
         }
         
         .footer-content {
-            position: absolute;
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 40px;
+            max-width: 1440px;
+            margin: 0 auto;
         }
         
         .contact-info {
@@ -278,11 +276,8 @@
         
         /* Credits*/
         .credits {
-            position: relative;
-            width: 1440px;
+            width: 100%;
             height: 67px;
-            left: 50%;
-            transform: translateX(-50%);
             background: var(--dark);
             display: flex;
             justify-content: center;
@@ -301,8 +296,8 @@
         
         /* Responsive Adjustments */
         @media (max-width: 1480px) {
-            footer, .credits {
-                width: 100%;
+            .footer-content {
+                padding: 0 20px;
             }
         }
         
@@ -396,11 +391,11 @@
             <a href="#" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
         </div>
         <nav>
-            <a href="#">HOME</a>
-            <a href="#" class="active">ABOUT US</a>
-            <a href="#">CATALOG</a>
-            <a href="#">FAQ</a>
-            <a href="#">CONTACT</a>
+            <a href="index.html">HOME</a>
+            <a href="aboutUs.html" class="active">ABOUT US</a>
+            <a href="catalog.html">CATALOG</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
     </header>
     

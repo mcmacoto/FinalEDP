@@ -69,6 +69,8 @@
             font-size: 84px;
             font-weight: bold;
             letter-spacing: 5px;
+            padding-top: 50px;
+
             color: white;
             text-decoration: none;
             display: inline-block;
@@ -207,36 +209,47 @@
         
         /* Footer */
         footer {
-            width: 100%;
+            width: 100vw;
+            min-width: 100vw;
             height: 220px;
             background: var(--dark);
             border: 4px solid var(--primary);
             margin-top: 40px;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
         }
-        
+
         .footer-content {
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
-            max-width: 1440px;
-            margin: 0 auto;
+            padding: 0 80px;
+            box-sizing: border-box;
         }
-        
-        .contact-info {
+
+        .contact-info-footer {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
             font-size: 20px;
             line-height: 24px;
             color: white;
+            padding-left: 50px;
+            padding-right: 50px;
         }
-        
+
         .social-handles {
-            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-left: 50px;
+            padding-right: 50px;
         }
-        
+
         .social-handle {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
@@ -246,25 +259,45 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
             gap: 10px;
         }
-        
+
+        .social-handle a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-handle a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
         .social-icon {
             width: 24px;
             height: 24px;
+            transition: filter 0.3s ease;
         }
-        
-        /* Credits*/
+
+        /* Credits */
         .credits {
-            width: 100%;
+            width: 100vw;
+            min-width: 100vw;
             height: 67px;
             background: var(--dark);
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
         }
-        
+
         .credits-text {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
@@ -274,7 +307,7 @@
             color: white;
             text-align: center;
         }
-        
+
         /* Responsive Adjustments */
         @media (max-width: 1480px) {
             .footer-content {
@@ -312,18 +345,19 @@
             
             .footer-content {
                 flex-direction: column;
-                justify-content: center;
-                text-align: center;
                 padding: 20px;
-            }
-            
-            .social-handles {
                 text-align: center;
-                margin-top: 20px;
             }
-            
-            .social-handle {
-                justify-content: center;
+            .social-handles {
+                align-items: center;
+                margin-top: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            .contact-info-footer {
+                text-align: center;
+                padding-left: 30px;
+                padding-right: 30px;
             }
         }
         
@@ -363,8 +397,346 @@
                 height: 35px;
                 font-size: 18px;
             }
+            
+            .footer-content {
+                padding: 20px;
+            }
         }
+
+                /* Footer */
+                footer {
+                    position: relative;
+                    width: 1440px;
+                    height: 220px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: var(--dark);
+                    border: 4px solid var(--primary);
+                    margin-top: 40px;
+                }
+                
+                .footer-content {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 40px;
+                }
+                
+                .contact-info {
+                    font-family: 'Noto Rashi Hebrew', serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 24px;
+                    color: white;
+                }
+                
+                .social-handles {
+                  text-align: right;
+              }
+              
+              .social-handle {
+                  font-family: 'Noto Rashi Hebrew', serif;
+                  font-weight: 500;
+                  font-size: 20px;
+                  line-height: 24px;
+                  color: white; 
+                  margin-bottom: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  gap: 10px;
+              }
+              
+              .social-handle a {
+                  color: white; 
+                  text-decoration: none; 
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  transition: all 0.3s ease;
+              }
+              
+              .social-handle a:hover {
+                  color: var(--primary); 
+                  transform: translateX(5px);
+              }
+              
+              .social-icon {
+                  width: 24px;
+                  height: 24px;
+                  transition: filter 0.3s ease;
+              }
+                
+                /* Credits */
+                .credits {
+                    position: relative;
+                    width: 1440px;
+                    height: 67px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: var(--dark);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .credits-text {
+                    font-family: 'Noto Rashi Hebrew', serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 24px;
+                    letter-spacing: 0.15em;
+                    color: white;
+                    text-align: center;
+                }
+                        
+                /* Responsive Adjustments */
+                @media (max-width: 1480px) {
+                    footer, .credits {
+                        width: 100%;
+                    }
+                }
+                
+                @media (max-width: 1200px) {
+                    main {
+                        padding: 40px;
+                    }
+                    
+                    nav {
+                        gap: 60px;
+                    }
+                    
+                    nav a {
+                        font-size: 24px;
+                    }
+                    
+                    h1 {
+                        font-size: 48px;
+                        line-height: 60px;
+                    }
+                    
+                    h2 {
+                        font-size: 72px;
+                        line-height: 90px;
+                    }
+                    
+                    p {
+                        font-size: 24px;
+                        line-height: 28px;
+                    }
+                    
+                    .btn {
+                        width: 350px;
+                        height: 70px;
+                        font-size: 28px;
+                    }
+                    
+                    .hero-section {
+                        flex-direction: column;
+                    }
+                    
+                    .hero-text {
+                        padding: 40px 0 0 0;
+                    }
+                    
+                    .image-caption {
+                        font-size: 28px;
+                        bottom: 20px;
+                        left: 20px;
+                    }
+                    
+                    .reservation-text {
+                        font-size: 48px;
+                    }
+                    
+                    .footer-content {
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    
+                    .social-handles {
+                        text-align: center;
+                        margin-top: 20px;
+                    }
+                    
+                    .social-handle {
+                        justify-content: center;
+                    }
+                    
+                    .grid-box {
+                        height: 300px;
+                        font-size: 28px;
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    nav {
+                        gap: 30px;
+                    }
+                    
+                    nav a {
+                        font-size: 18px;
+                    }
+                    
+                    h1 {
+                        font-size: 36px;
+                        line-height: 48px;
+                    }
+                    
+                    h2 {
+                        font-size: 48px;
+                        line-height: 60px;
+                    }
+                    
+                    p {
+                        font-size: 18px;
+                        line-height: 22px;
+                    }
+                    
+                    .btn {
+                        width: 280px;
+                        height: 60px;
+                        font-size: 22px;
+                    }
+                    
+                    .image-caption {
+                        font-size: 20px;
+                    }
+                    
+                    .hero-text h1 {
+                        font-size: 48px;
+                        line-height: 60px;
+                    }
+                    
+                    .hero-description {
+                        font-size: 18px;
+                    }
+                    
+                    .reservation-text {
+                        font-size: 36px;
+                    }
+                    
+                    .grid-4x4 {
+                        grid-template-columns: 1fr;
+                        grid-template-rows: repeat(4, 250px);
+                    }
+                    
+                    .grid-box {
+                        height: 250px;
+                        font-size: 24px;
+                    }
+                }
+        
+
+        /* Ask Us Button */
+        #askButton {
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary);
+            color: white;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 24px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+        }
+        .ask-button {
+            background: var(--primary);
+            color: white;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 24px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .ask-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--overlay);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ask-modal {
+            background: var(--dark);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+
+        }
+
+        .ask-title {
+            font-family: 'Lobster Two', cursive;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 20px;
+        }
+            
+        .ask-input {
+            width: 100%;
+            height: 120px;
+            font-size: 18px;
+            font-family: 'Noto Sans', sans-serif;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+            resize: none;
+            }
+            
+            .ask-submit {
+                background-color: var(--primary);
+                color: white;
+                font-family: 'League Spartan', sans-serif;
+                font-size: 20px;
+                padding: 12px 30px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+            
+            .close-button {
+                position: absolute;
+                top: 20px;
+                right: 25px;
+                font-size: 28px;
+                color: white;
+                cursor: pointer;
+            }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const askButton = document.getElementById('askButton');
+            const askOverlay = document.getElementById('askOverlay');
+    
+            askButton.addEventListener('click', () => {
+                askOverlay.style.display = 'flex';
+            });
+    
+            window.closeOverlay = function () {
+                askOverlay.style.display = 'none';
+            };
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -438,12 +810,21 @@
                     Yes! We have private dining rooms perfect for business functions, intimate celebrations, or exclusive tasting menus. Reach out via our contact page for arrangements.
                 </p>
             </div>
-        </div>
+
+            <button id="askButton" class="ask-button">Ask Us a Question</button>
+            <div id="askOverlay" class="ask-overlay">
+                <div class="ask-modal">
+                    <span class="close-button" onclick="closeOverlay()">×</span>
+                    <h1 class="ask-title">What would you like to ask us?</h1>
+                    <textarea class="ask-input" placeholder="Type your question here..."></textarea>
+                    <button class="ask-submit" onclick="closeOverlay()">Submit</button>
+                </div>
+            </div>
     </main>
-    
+
     <footer>
         <div class="footer-content">
-            <div class="contact-info">
+            <div class="contact-info-footer">
                 115 P. Pelayo Street, Poblacion District<br>
                 Davao City, 8000 Davao del Sur<br>
                 Philippines<br>
@@ -452,21 +833,26 @@
             </div>
             <div class="social-handles">
                 <div class="social-handle">
-                    <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
-                    Bondi&Bourke Davao
+                    <a href="https://www.facebook.com/bondiandbourkedavao" rel="noopener noreferrer">
+                        <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                        Bondi&Bourke Davao
+                    </a>
                 </div>
                 <div class="social-handle">
-                    <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
-                    @bondibourkeph
+                    <a href="https://instagram.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                        @bondibourkeph
+                    </a>
                 </div>
                 <div class="social-handle">
-                    <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
-                    @bondibourkeph
+                    <a href="https://twitter.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                        @bondibourkeph
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
-    
     <div class="credits">
         <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
     </div>

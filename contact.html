@@ -30,7 +30,6 @@
             line-height: 33px;
         }
         
-        /* Header */
         header {
             position: relative;
             height: 240px;
@@ -69,6 +68,7 @@
             font-size: 84px;
             font-weight: bold;
             letter-spacing: 5px;
+            padding-top: 50px;
             color: white;
             text-decoration: none;
             display: inline-block;
@@ -78,8 +78,6 @@
             color: #d35400;
         }
 
-        
-        /* Navigation */
         nav {
             position: absolute;
             bottom: 20px;
@@ -122,7 +120,6 @@
             width: 100%;
         }
         
-        /* Active page indicator */
         nav a.active {
             color: var(--light);
         }
@@ -131,7 +128,6 @@
             width: 100%;
         }
         
-        /* Main Content */
         main {
             max-width: 1440px;
             margin: 0 auto;
@@ -140,7 +136,6 @@
             background: var(--light);
         }
         
-        /* Contact Container */
         .contact-container {
             display: flex;
             flex-wrap: wrap;
@@ -148,7 +143,6 @@
             margin-bottom: 60px;
         }
         
-        /* Contact Info Section */
         .contact-info {
             flex: 1 1 500px;
             position: relative;
@@ -187,7 +181,6 @@
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        /* Contact Form Section */
         .contact-form {
             flex: 1 1 500px;
             background: radial-gradient(100.11% 100.11% at 51.52% 100.05%, #D35400 0%, #894213 8.65%, #553520 33.65%, #2B2B2B 64.9%);
@@ -264,38 +257,44 @@
             background-color: #e05e00;
         }
         
-        /* Footer */
         footer {
-            width: 100%;
+            width: 100vw;
+            min-width: 100vw;
             height: 220px;
             background: var(--dark);
             border: 4px solid var(--primary);
             margin-top: 40px;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
         }
-        
         .footer-content {
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
-            max-width: 1440px;
-            margin: 0 auto;
+            padding: 0 80px;
+            box-sizing: border-box;
         }
-        
         .contact-info-footer {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
             font-size: 20px;
             line-height: 24px;
             color: white;
+            padding-left: 50px;
+            padding-right: 50px;
         }
-        
         .social-handles {
-            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-left: 50px;
+            padding-right: 50px;
         }
-        
         .social-handle {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
@@ -305,25 +304,40 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
             gap: 10px;
         }
-        
+        .social-handle a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        .social-handle a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
         .social-icon {
             width: 24px;
             height: 24px;
+            transition: filter 0.3s ease;
         }
-        
-        /* Credits*/
         .credits {
-            width: 100%;
+            width: 100vw;
+            min-width: 100vw;
             height: 67px;
             background: var(--dark);
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
+            text-align: center; /* Ensure centering */
         }
-        
         .credits-text {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
@@ -332,9 +346,23 @@
             letter-spacing: 0.15em;
             color: white;
             text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
         }
-        
-        /* Responsive Adjustments */
+        footer[style], .footer-content[style], .credits[style] {
+            width: unset !important;
+            left: unset !important;
+            transform: unset !important;
+            position: unset !important;
+            max-width: unset !important;
+            margin: unset !important;
+        }
+        @media (max-width: 1480px) {
+            .footer-content {
+                padding: 0 20px;
+            }
+        }
         @media (max-width: 1200px) {
             main {
                 padding: 40px;
@@ -360,22 +388,20 @@
             
             .footer-content {
                 flex-direction: column;
-                justify-content: center;
-                text-align: center;
                 padding: 20px;
+                text-align: center;
             }
             
             .social-handles {
-                text-align: center;
+                align-items: center;
                 margin-top: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
             }
-            
-            .social-handle {
-                justify-content: center;
-            }
-            
             .contact-info-footer {
                 text-align: center;
+                padding-left: 30px;
+                padding-right: 30px;
             }
         }
         
@@ -409,6 +435,10 @@
             .contact-form {
                 padding: 30px;
             }
+            
+            .footer-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -429,7 +459,6 @@
     
     <main>
         <div class="contact-container">
-            <!-- Contact Info Section -->
             <div class="contact-info">
                 <h2 class="contact-title">GETTING HERE</h2>
                 <div class="divider">
@@ -439,7 +468,6 @@
                 <div class="map-container"></div>
             </div>
             
-            <!-- Contact Form Section -->
             <div class="contact-form">
                 <h2 class="form-title">Send a Message</h2>
                 <form>
@@ -472,21 +500,26 @@
             </div>
             <div class="social-handles">
                 <div class="social-handle">
-                    <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
-                    Bondi&Bourke Davao
+                    <a href="https://www.facebook.com/bondiandbourkedavao" rel="noopener noreferrer">
+                        <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                        Bondi&Bourke Davao
+                    </a>
                 </div>
                 <div class="social-handle">
-                    <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
-                    @bondibourkeph
+                    <a href="https://instagram.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                        @bondibourkeph
+                    </a>
                 </div>
                 <div class="social-handle">
-                    <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
-                    @bondibourkeph
+                    <a href="https://twitter.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                        @bondibourkeph
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
-    
     <div class="credits">
         <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
     </div>

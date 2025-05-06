@@ -341,96 +341,6 @@
             transform: translateY(-5px);
         }
         
-        /* Footer */
-        footer {
-            position: relative;
-            width: 1440px;
-            height: 220px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--dark);
-            border: 4px solid var(--primary);
-            margin-top: 40px;
-        }
-        
-        .footer-content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
-        
-        .contact-info {
-            font-family: 'Noto Rashi Hebrew', serif;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
-            color: white;
-        }
-        
-        .social-handles {
-          text-align: right;
-      }
-      
-      .social-handle {
-          font-family: 'Noto Rashi Hebrew', serif;
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 24px;
-          color: white; 
-          margin-bottom: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 10px;
-      }
-      
-      .social-handle a {
-          color: white; 
-          text-decoration: none; 
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          transition: all 0.3s ease;
-      }
-      
-      .social-handle a:hover {
-          color: var(--primary); 
-          transform: translateX(5px);
-      }
-      
-      .social-icon {
-          width: 24px;
-          height: 24px;
-          transition: filter 0.3s ease;
-      }
-        
-        /* Credits */
-        .credits {
-            position: relative;
-            width: 1440px;
-            height: 67px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .credits-text {
-            font-family: 'Noto Rashi Hebrew', serif;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
-            letter-spacing: 0.15em;
-            color: white;
-            text-align: center;
-        }
-        
         /* Special Sections */
         .highlight-section {
             background-color: var(--primary);
@@ -517,14 +427,113 @@
             color: white;
             font-size: 24px;
         }
-        
-        /* Responsive Adjustments */
+                /* Footer */
+        footer {
+            width: 100vw;
+            min-width: 100vw;
+            height: 220px;
+            background: var(--dark);
+            border: 4px solid var(--primary);
+            margin-top: 40px;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
+        }
+        .footer-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 80px;
+            box-sizing: border-box;
+        }
+        .contact-info-footer {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        .social-handles {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        .social-handle {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-handle a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        .social-handle a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            transition: filter 0.3s ease;
+        }
+        .credits {
+            width: 100vw;
+            min-width: 100vw;
+            height: 67px;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .credits-text {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.15em;
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+        footer[style], .footer-content[style], .credits[style] {
+            width: unset !important;
+            left: unset !important;
+            transform: unset !important;
+            position: unset !important;
+            max-width: unset !important;
+            margin: unset !important;
+        }
         @media (max-width: 1480px) {
-            footer, .credits {
-                width: 100%;
+            .footer-content {
+                padding: 0 20px;
             }
         }
-        
         @media (max-width: 1200px) {
             main {
                 padding: 40px;
@@ -579,23 +588,20 @@
             
             .footer-content {
                 flex-direction: column;
-                justify-content: center;
-                text-align: center;
                 padding: 20px;
+                text-align: center;
             }
             
             .social-handles {
-                text-align: center;
+                align-items: center;
                 margin-top: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
             }
-            
-            .social-handle {
-                justify-content: center;
-            }
-            
-            .grid-box {
-                height: 300px;
-                font-size: 28px;
+            .contact-info-footer {
+                text-align: center;
+                padding-left: 30px;
+                padding-right: 30px;
             }
         }
         
@@ -657,7 +663,120 @@
             }
         }
 
+        .reservation-overlay-bg {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(43, 43, 43, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .reservation-modal {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 40px 30px 30px 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .reservation-modal h2 {
+            font-family: 'Lobster Two', cursive;
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .reservation-modal label {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .reservation-modal input[type="text"],
+        .reservation-modal input[type="email"],
+        .reservation-modal input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #A6A6A6;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        .reservation-modal .reservation-submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 20px;
+            padding: 12px 0;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .reservation-modal .reservation-submit-btn:hover {
+            background: #b94a00;
+        }
+        .reservation-modal .close-reservation {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10;
+        }
 
+        /* Popup styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(43, 43, 43, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-modal {
+            background: var(--dark);
+            color: white;
+            border-radius: 16px;
+            padding: 36px 32px 28px 32px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        .popup-modal .close-popup {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 26px;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .popup-modal p {
+            font-family: 'League Spartan', sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -697,19 +816,39 @@
             </div>
         </section>
         
+        <div id="reservationOverlay" class="reservation-overlay-bg">
+            <form class="reservation-modal" id="reservationForm">
+                <button type="button" class="close-reservation" id="closeReservation" aria-label="Close">&times;</button>
+                <h2>Book a Reservation</h2>
+                <label for="res-name">Name</label>
+                <input type="text" id="res-name" name="name" required autocomplete="off" placeholder="Your Name">
+                <label for="res-email">Email</label>
+                <input type="email" id="res-email" name="email" required autocomplete="off" placeholder="Your Email">
+                <label for="res-date">Date</label>
+                <input type="date" id="res-date" name="date" required>
+                <button type="submit" class="reservation-submit-btn">Submit</button>
+            </form>
+        </div>
         <section class="boxes-section">
             <div class="grid-4x4">
-                <div class="grid-box box1">Upcoming Events</div>
-                <div class="grid-box box2">Special Offers</div>
-                <div class="grid-box box3">Our Menu</div>
-                <div class="grid-box box4">Latest News</div>
+                <div class="grid-box box1" id="upcomingEventsBox">Upcoming Events</div>
+                <div class="grid-box box2"></div>
+                <div class="grid-box box3"></div>
+                <div class="grid-box box4" id="latestNewsBox">Latest News</div>
             </div>
         </section>
+
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-modal">
+                <button type="button" class="close-popup" id="closePopup" aria-label="Close">&times;</button>
+                <p>There are no new events in a week nor news within the past week from now.</p>
+            </div>
+        </div>
     </main>
     
     <footer>
         <div class="footer-content">
-            <div class="contact-info">
+            <div class="contact-info-footer">
                 115 P. Pelayo Street, Poblacion District<br>
                 Davao City, 8000 Davao del Sur<br>
                 Philippines<br>
@@ -717,29 +856,74 @@
                 E: info@bondibourke.com
             </div>
             <div class="social-handles">
-              <div class="social-handle">
-                  <a href="https://www.facebook.com/bondiandbourkedavao" target="_blank" rel="noopener noreferrer">
-                      <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
-                      Bondi&Bourke Davao
-                  </a>
-              </div>
-              <div class="social-handle">
-                  <a href="https://instagram.com/bondibourkeph" target="_blank" rel="noopener noreferrer">
-                      <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
-                      @bondibourkeph
-                  </a>
-              </div>
-              <div class="social-handle">
-                  <a href="https://twitter.com/bondibourkeph" target="_blank" rel="noopener noreferrer">
-                      <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
-                      @bondibourkeph
-                  </a>
-              </div>
-          </div>
+                <div class="social-handle">
+                    <a href="https://www.facebook.com/bondiandbourkedavao" rel="noopener noreferrer">
+                        <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                        Bondi&Bourke Davao
+                    </a>
+                </div>
+                <div class="social-handle">
+                    <a href="https://instagram.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                        @bondibourkeph
+                    </a>
+                </div>
+                <div class="social-handle">
+                    <a href="https://twitter.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                        @bondibourkeph
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
-    
     <div class="credits">
         <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // reservation
+            const reservationBtn = document.querySelector('.reservation-image');
+            const reservationOverlay = document.getElementById('reservationOverlay');
+            const closeReservationBtn = document.getElementById('closeReservation');
+            const reservationForm = document.getElementById('reservationForm');
+
+            reservationBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                reservationOverlay.style.display = 'flex';
+            });
+
+            closeReservationBtn.addEventListener('click', function() {
+                reservationOverlay.style.display = 'none';
+            });
+
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                reservationOverlay.style.display = 'none';
+            });
+
+            // news and events alert
+            const popupOverlay = document.getElementById('infoPopup');
+            const closePopupBtn = document.getElementById('closePopup');
+            const upcomingEventsBox = document.getElementById('upcomingEventsBox');
+            const latestNewsBox = document.getElementById('latestNewsBox');
+
+            function openPopup() {
+                popupOverlay.style.display = 'flex';
+            }
+            function closePopup() {
+                popupOverlay.style.display = 'none';
+            }
+
+            upcomingEventsBox.addEventListener('click', openPopup);
+            latestNewsBox.addEventListener('click', openPopup);
+            closePopupBtn.addEventListener('click', closePopup);
+
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) closePopup();
+            });
+        });
+    </script>
 </body>
 </html>

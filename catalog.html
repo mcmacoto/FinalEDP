@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bondi&Bourke</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=League+Spartan:wght@200;600&family=Noto+Sans:wght@500&family=Noto+Rashi+Hebrew:wght@500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primary: #D35400;
+      --dark: #1C1C1C;
+      --light: #F6F4F1;
+      --text: #1F1F1F;
+      --overlay: rgba(43, 43, 43, 0.7);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'League Spartan', sans-serif;
+      font-weight: 200;
+      color: var(--text);
+      background: white;
+      line-height: 33px;
+    }
+
+    header {
+      position: relative;
+      height: 240px;
+      background: url('bondibourkemenuheader.jpg') center/cover;
+      filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @font-face {
+      font-family: 'Norwester';
+      src: url('norwester.otf') format('opentype');
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding-top: 50px;
+
+      z-index: 10;
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Norwester', sans-serif;
+      font-size: 84px;
+      padding-top: 50px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo .amp {
+      color: var(--primary);
+    }
+
+    nav {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 113px;
+      z-index: 10;
+    }
+
+    nav a {
+      color: var(--light);
+      font-family: 'Noto Sans', sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 60px 80px;
+      background: var(--light);
+    }
+
+    .specials-section {
+      display: flex;
+      background: white;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+    }
+
+    .specials-section img {
+      max-width: 100%;
+      width: 500px;
+    }
+
+    .specials-text {
+      flex: 1;
+      background: var(--dark);
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .specials-text h1 {
+      color: var(--primary);
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .specials-text h2 {
+      font-family: 'Lobster Two', cursive;
+      font-size: 46px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .specials-text p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .specials-buttons {
+      display: flex;
+      gap: 20px;
+      margin: auto;
+    }
+
+    .specials-buttons button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .specials-buttons button:hover {
+      transform: scale(1.05);
+      background: #a84300;
+    }
+
+    .food-items {
+      display: flex;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .food-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .food-item img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .food-item img:hover {
+      transform: scale(1.03);
+    }
+
+    .food-item h3 {
+      margin-top: 15px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    .food-item p {
+      font-size: 26px;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .menu-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border: 4px solid white;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.3);
+    }
+
+    .menu-overlay .close-btn {
+      position: absolute;
+      top: 40px;
+      right: 60px;
+      color: white;
+      font-size: 50px;
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      font-size: 60px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(-50%);
+      padding: 10px;
+    }
+
+    .arrow.left {
+      left: 50px;
+    }
+
+    .arrow.right {
+      right: 50px;
+    }
+
+    .food-gallery-section {
+        padding: 60px 0;
+        text-align: center;
+        background: #1C1C1C;
+      }
+      
+      .food-gallery-section h2 {
+        color: white;
+        font-size: 40px;
+        margin-bottom: 40px;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .food-gallery-section h2::before,
+      .food-gallery-section h2::after {
+        content: '';
+        display: inline-block;
+        height: 2px;
+        width: 60px;
+        background-color: white;
+        vertical-align: middle;
+        margin: 0 20px;
+      }
+      
+      .food-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 0 60px;
+      }
+      
+      .food-gallery-grid img {
+        width: 100%;
+        height: 220px;
+        border-radius: 10px;
+        object-fit: cover; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        aspect-ratio: 4/3; 
+      }
+        /* Footer */
+        footer {
+            width: 100vw;
+            min-width: 100vw;
+            height: 220px;
+            background: var(--dark);
+            border: 4px solid var(--primary);
+            margin-top: 40px;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
+        }
+        
+        .footer-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 80px;
+            box-sizing: border-box;
+        }
+        
+        .contact-info-footer {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        
+        .social-handles {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        
+        .social-handle {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-handle a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-handle a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            transition: filter 0.3s ease;
+        }
+        
+        /* Credits */
+        .credits {
+            width: 100vw;
+            min-width: 100vw;
+            height: 67px;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 50%;
+            right: 0;
+            transform: translateX(-50%);
+            box-sizing: border-box;
+        }
+        
+        .credits-text {
+            font-family: 'Noto Rashi Hebrew', serif;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: 0.15em;
+            color: white;
+            text-align: center;
+        }
+                
+        /* Responsive Adjustments */
+        @media (max-width: 1480px) {
+            .footer-content {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            main {
+                padding: 40px;
+            }
+            
+            nav {
+                gap: 60px;
+            }
+            
+            nav a {
+                font-size: 24px;
+            }
+            
+            h1 {
+                font-size: 48px;
+                line-height: 60px;
+            }
+            
+            h2 {
+                font-size: 72px;
+                line-height: 90px;
+            }
+            
+            p {
+                font-size: 24px;
+                line-height: 28px;
+            }
+            
+            .btn {
+                width: 350px;
+                height: 70px;
+                font-size: 28px;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                padding: 40px 0 0 0;
+            }
+            
+            .image-caption {
+                font-size: 28px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .reservation-text {
+                font-size: 48px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .social-handles {
+                align-items: center;
+                margin-top: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            
+            .contact-info-footer {
+                text-align: center;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                gap: 30px;
+            }
+            
+            nav a {
+                font-size: 18px;
+            }
+            
+            h1 {
+                font-size: 36px;
+                line-height: 48px;
+            }
+            
+            h2 {
+                font-size: 48px;
+                line-height: 60px;
+            }
+            
+            p {
+                font-size: 18px;
+                line-height: 22px;
+            }
+            
+            .btn {
+                width: 280px;
+                height: 60px;
+                font-size: 22px;
+            }
+            
+            .image-caption {
+                font-size: 20px;
+            }
+            
+            .hero-text h1 {
+                font-size: 48px;
+                line-height: 60px;
+            }
+            
+            .hero-description {
+                font-size: 18px;
+            }
+            
+            .reservation-text {
+                font-size: 36px;
+            }
+            
+            .grid-4x4 {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 250px);
+            }
+            
+            .grid-box {
+                height: 250px;
+                font-size: 24px;
+            }
+        }
+
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuOverlay = document.getElementById('menuOverlay');
+      const menuImage = document.getElementById('menuImage');
+      const closeBtn = document.querySelector('.close-btn');
+      const leftArrow = document.querySelector('.arrow.left');
+      const rightArrow = document.querySelector('.arrow.right');
+      const viewMenuBtn = document.querySelector('.specials-buttons button:last-child');
+
+      const images = [
+        'bondimenu1.jpg',
+        'bondimenu2.jpg',
+        'bondimenu3.jpg',
+        'bondimenu5.jpg',
+        'bondimenu6.jpg'
+      ];
+
+      let currentIndex = 0;
+
+      function showImage(index) {
+        menuImage.src = images[index];
+      }
+
+      viewMenuBtn.addEventListener('click', () => {
+        menuOverlay.style.display = 'flex';
+        currentIndex = 0;
+        showImage(currentIndex);
+      });
+
+      closeBtn.addEventListener('click', () => {
+        menuOverlay.style.display = 'none';
+      });
+
+      leftArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+
+      rightArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          menuOverlay.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="header-overlay"></div>
+    <div class="logo-container">
+      <a href="#" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
+    </div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="aboutUs.html">ABOUT US</a>
+      <a href="catalog.html" class="active">CATALOG</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="specials-section">
+      <img src="bondiburger.jpg" alt="Aussie Beef Burger" />
+      <div class="specials-text">
+        <h1>------------- SPECIAL OFFER -------------</h1>
+        <h2>Aussie Beef Burger</h2>
+        <p>A juicy Australian beef patty stacked with cheddar, crisp lettuce, tomato, and smoky aioli on a toasted brioche bun. Served with golden fries for the perfect bite.</p>
+        <div class="specials-buttons">
+          <button>LEARN MORE</button>
+          <button>VIEW MENU</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-items">
+      <div class="food-item">
+        <img src="bondiprawn.png" alt="Prawn Carbonara" />
+        <h3>PRAWN CARBONARA</h3>
+        <p>₱ 454.00</p>
+      </div>
+      <div class="food-item">
+        <img src="bondirisoto.png" alt="Seafood Rosito" />
+        <h3>SEAFOOD ROSITO</h3>
+        <p>₱ 299.00</p>
+      </div>
+      <div class="food-item">
+        <img src="bondivelvet.png" alt="Red Velvet Gateu" />
+        <h3>RED VELVET GATEU</h3>
+        <p>₱ 250.00</p>
+      </div>
+    </div>
+    <section class="food-gallery-section">
+        <h2>FOOD GALLERY</h2>
+        <div class="food-gallery-grid">
+          <img src="bondigallery1.jpg"/>
+          <img src="bondigallery2.jpg">
+          <img src="bondigallery3.jpg">
+          <img src="bondigallery4.jpg">
+          <img src="bondigallery5.jpg">
+          <img src="bondigallery6.jpg">
+          <img src="bondigallery7.jpg">
+          <img src="bondigallery8.jpg">
+          <img src="bondigallery9.jpg">
+        </div>
+      </section>
+  </main>
+
+  <div id="menuOverlay" class="menu-overlay">
+    <span class="close-btn">&times;</span>
+    <img id="menuImage" src="bondimenu1.jpg" alt="Menu Image" />
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+  </div>
+  <footer>
+    <div class="footer-content">
+        <div class="contact-info-footer">
+            115 P. Pelayo Street, Poblacion District<br>
+            Davao City, 8000 Davao del Sur<br>
+            Philippines<br>
+            M: 0998-593-3763<br>
+            E: info@bondibourke.com
+        </div>
+        <div class="social-handles">
+            <div class="social-handle">
+                <a href="https://www.facebook.com/bondiandbourkedavao" rel="noopener noreferrer">
+                    <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                    Bondi&Bourke Davao
+                </a>
+            </div>
+            <div class="social-handle">
+                <a href="https://instagram.com/bondibourkeph" rel="noopener noreferrer">
+                    <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                    @bondibourkeph
+                </a>
+            </div>
+            <div class="social-handle">
+                <a href="https://twitter.com/bondibourkeph" rel="noopener noreferrer">
+                    <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                    @bondibourkeph
+                </a>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <div class="credits">
+      <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
+  </div>
+</body>
+</html>

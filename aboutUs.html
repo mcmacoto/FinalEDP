@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bondi&Bourke</title>
+    <title>Bondi&Bourke - About Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=League+Spartan:wght@200;600&family=Noto+Sans:wght@500&family=Noto+Rashi+Hebrew:wght@500&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
             color: var(--text);
             background: white;
             line-height: 33px;
+            overflow-x: hidden;
         }
         
         /* Header */
@@ -55,60 +56,86 @@
             font-style: normal;
         }
 
+        /* Logo */
         .logo-container {
             position: absolute;
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 100;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
         .logo {
             font-family: 'Norwester', sans-serif;
-            font-size: 84px;
             font-weight: bold;
-            padding-top: 50px;
             letter-spacing: 5px;
+            padding-top: 50px;
             color: white;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
+            font-size: clamp(2.5rem, 8vw, 5.25rem);
         }
 
         .logo .amp {
             color: #d35400;
         }
 
-        
-        /* Navigation hovers */
-        nav {
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .burger-line {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation */
+        .main-nav {
             position: absolute;
             bottom: 20px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 113px;
+            gap: clamp(1rem, 6vw, 7rem);
             z-index: 10;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        opacity 0.4s ease;
         }
         
-        nav a {
+        .main-nav a {
             color: var(--light);
             font-family: 'Noto Sans', sans-serif;
-            font-style: normal;
             font-weight: 500;
-            font-size: 30px;
+            font-size: clamp(1rem, 2vw, 1.875rem);
             line-height: 41px;
             text-decoration: none;
             position: relative;
             padding-bottom: 5px;
+            white-space: nowrap;
         }
         
-        nav a:hover {
+        .main-nav a:hover {
             color: var(--light);
         }
         
-        nav a::after {
+        .main-nav a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -119,20 +146,19 @@
             transition: width 0.3s;
         }
         
-        nav a:hover::after {
+        .main-nav a:hover::after {
             width: 100%;
         }
         
-        /* Active page indicator */
-        nav a.active {
+        .main-nav a.active {
             color: var(--light);
         }
         
-        nav a.active::after {
+        .main-nav a.active::after {
             width: 100%;
         }
         
-        /* Main  */
+        /* Main Content */
         main {
             max-width: 1440px;
             margin: 0 auto;
@@ -176,8 +202,8 @@
             font-family: 'Lobster Two', cursive;
             font-style: normal;
             font-weight: 400;
-            font-size: 64px;
-            line-height: 80px;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
             margin-bottom: 40px;
         }
         
@@ -185,8 +211,8 @@
             font-family: 'Lobster Two', cursive;
             font-style: normal;
             font-weight: 400;
-            font-size: 96px;
-            line-height: 120px;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
             margin-bottom: 40px;
         }
         
@@ -194,8 +220,8 @@
             font-family: 'League Spartan', sans-serif;
             font-style: normal;
             font-weight: 200;
-            font-size: 36px;
-            line-height: 33px;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            line-height: 1.5;
             text-align: justify;
             margin-bottom: 30px;
         }
@@ -207,13 +233,13 @@
             justify-content: center;
             background: var(--primary);
             color: white;
-            width: 474px;
-            height: 90px;
+            width: clamp(280px, 100%, 474px);
+            height: clamp(60px, 8vw, 90px);
             border-radius: 15px;
             font-family: 'League Spartan', sans-serif;
             font-weight: 600;
-            font-size: 36px;
-            line-height: 33px;
+            font-size: clamp(1.2rem, 3vw, 2.25rem);
+            line-height: 1.3;
             text-decoration: none;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -253,8 +279,8 @@
         .contact-info-footer {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             padding-left: 50px;
             padding-right: 50px;
@@ -271,8 +297,8 @@
         .social-handle {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             margin-bottom: 10px;
             display: flex;
@@ -319,8 +345,8 @@
         .credits-text {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            line-height: 1.5;
             letter-spacing: 0.15em;
             color: white;
             text-align: center;
@@ -328,104 +354,141 @@
             margin: 0 auto;
             display: block;
         }
-        
-        footer[style], .footer-content[style], .credits[style] {
-            width: unset !important;
-            left: unset !important;
-            transform: unset !important;
-            position: unset !important;
-            max-width: unset !important;
-            margin: unset !important;
-        }
-        
-        @media (max-width: 1480px) {
-            .footer-content {
-                padding: 0 20px;
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .logo {
+                padding-top: 20px;
+                letter-spacing: 3px;
             }
-        }
-        
-        @media (max-width: 1200px) {
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 100%;
+                background: var(--overlay);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(5px);
+            }
+            
+            .main-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .main-nav a {
+                font-size: 1.5rem;
+                padding: 10px 0;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            
+            .main-nav.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .main-nav a:nth-child(1) { transition-delay: 0.1s; }
+            .main-nav a:nth-child(2) { transition-delay: 0.15s; }
+            .main-nav a:nth-child(3) { transition-delay: 0.2s; }
+            .main-nav a:nth-child(4) { transition-delay: 0.25s; }
+            .main-nav a:nth-child(5) { transition-delay: 0.3s; }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
             main {
-                padding: 24px 8vw;
+                padding: 30px 20px;
             }
+            
             .section,
             .section.reverse {
                 flex-direction: column;
                 gap: 30px;
+                margin-bottom: 60px;
             }
+            
+            .section-image img {
+                height: auto !important;
+                max-height: 400px;
+            }
+            
             .footer-content {
                 flex-direction: column;
-                padding: 20px;
+                padding: 30px 20px;
                 text-align: center;
             }
+            
+            .contact-info-footer {
+                padding: 0;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
             .social-handles {
                 align-items: center;
-                margin-top: 20px;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            .contact-info-footer {
-                text-align: center;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            .section-image img {
-                height: auto !important;
-                min-height: 180px;
-                max-width: 100%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            main {
-                padding: 16px 2vw;
-            }
-            nav {
-                gap: 18px;
-                flex-wrap: wrap;
-            }
-            nav a {
-                font-size: 16px;
-                padding-bottom: 2px;
-            }
-            h1, h2 {
-                font-size: 28px;
-                line-height: 36px;
-            }
-            p {
-                font-size: 16px;
-                line-height: 22px;
-            }
-            .btn {
-                width: 90vw;
-                height: 48px;
-                font-size: 18px;
-            }
-            .section-image img {
-                height: auto !important;
-                min-height: 120px;
-                max-width: 100%;
-            }
-            .footer-content {
-                padding: 10px;
-            }
-            .contact-info-footer,
-            .social-handles {
-                padding-left: 10px;
-                padding-right: 10px;
-                font-size: 14px;
+                padding: 0;
             }
         }
 
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav a {
+                font-size: 1.25rem;
+            }
+            
+            .section-image img {
+                max-height: 300px;
+            }
+            
+            .btn {
+                height: 50px;
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-overlay"></div>
         <div class="logo-container">
-            <a href="#" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
+            <a href="index.html" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
         </div>
-        <nav>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        
+        <nav class="main-nav">
             <a href="index.html">HOME</a>
             <a href="aboutUs.html" class="active">ABOUT US</a>
             <a href="catalog.html">CATALOG</a>
@@ -437,7 +500,7 @@
     <main>
         <section class="section">
             <div class="section-image">
-                <img src="bondiTeam.jpg" alt="Bondi & Bourke Staff Picture" style="height: 839px;">
+                <img src="bondiTeam.jpg" alt="Bondi & Bourke Staff Picture">
             </div>
             <div class="section-content">
                 <h1>Who are we?</h1>
@@ -449,7 +512,7 @@
         
         <section class="section reverse">
             <div class="section-image">
-                <img src="wadeWatson.jpg" alt="Award-Winning Chef Wade Watson" style="height: 785px;">
+                <img src="wadeWatson.jpg" alt="Award-Winning Chef Wade Watson">
             </div>
             <div class="section-content">
                 <h2>About us</h2>
@@ -494,5 +557,42 @@
     <div class="credits">
         <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
     </div>
+
+    <script>
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            function toggleMenu() {
+                const isOpening = !mainNav.classList.contains('active');
+                
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                document.body.style.overflow = isOpening ? 'hidden' : '';
+            }
+            
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (mainNav.classList.contains('active') && 
+                    !e.target.closest('.main-nav') && 
+                    !e.target.closest('.mobile-menu-toggle')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

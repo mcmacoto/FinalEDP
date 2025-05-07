@@ -28,6 +28,7 @@
             color: var(--text);
             background: white;
             line-height: 33px;
+            overflow-x: hidden;
         }
         
         /* Header */
@@ -54,62 +55,89 @@
             font-weight: normal;
             font-style: normal;
         }
-
+        
+        /* Logo */
         .logo-container {
             position: absolute;
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 100;
             text-align: center;
+            transition: all 0.3s ease;
         }
-
+        
         .logo {
             font-family: 'Norwester', sans-serif;
-            font-size: 84px;
             font-weight: bold;
             letter-spacing: 5px;
             padding-top: 50px;
-
             color: white;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
+            font-size: clamp(2.5rem, 8vw, 5.25rem);
         }
-
+        
         .logo .amp {
             color: #d35400;
         }
-
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .burger-line {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
         
         /* Navigation */
-        nav {
+        .main-nav {
             position: absolute;
             bottom: 20px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 113px;
+            gap: clamp(1rem, 6vw, 7rem);
             z-index: 10;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        opacity 0.4s ease;
         }
         
-        nav a {
+        .main-nav a {
             color: var(--light);
             font-family: 'Noto Sans', sans-serif;
-            font-style: normal;
             font-weight: 500;
-            font-size: 30px;
+            font-size: clamp(1rem, 2vw, 1.875rem);
             line-height: 41px;
             text-decoration: none;
             position: relative;
             padding-bottom: 5px;
+            white-space: nowrap;
+            opacity: 1;
+            transition: opacity 0.3s ease;
         }
         
-        nav a:hover {
+        .main-nav a:hover {
             color: var(--light);
         }
         
-        nav a::after {
+        .main-nav a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -120,16 +148,15 @@
             transition: width 0.3s;
         }
         
-        nav a:hover::after {
+        .main-nav a:hover::after {
             width: 100%;
         }
         
-        /* Active page indicator */
-        nav a.active {
+        .main-nav a.active {
             color: var(--light);
         }
         
-        nav a.active::after {
+        .main-nav a.active::after {
             width: 100%;
         }
         
@@ -147,8 +174,8 @@
             font-family: 'Lobster Two', cursive;
             font-style: normal;
             font-weight: 400;
-            font-size: 64px;
-            line-height: 80px;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
             text-align: center;
             margin-bottom: 60px;
             color: var(--text);
@@ -169,14 +196,19 @@
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             padding-left: 100px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-5px);
         }
         
         .faq-question {
             font-family: 'Lobster Two', cursive;
             font-style: normal;
             font-weight: 400;
-            font-size: 32px;
-            line-height: 40px;
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            line-height: 1.3;
             color: #D9D9D9;
             margin-bottom: 20px;
         }
@@ -185,8 +217,8 @@
             font-family: 'League Spartan', sans-serif;
             font-style: normal;
             font-weight: 200;
-            font-size: 24px;
-            line-height: 28px;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            line-height: 1.5;
             color: white;
         }
         
@@ -221,7 +253,7 @@
             transform: translateX(-50%);
             box-sizing: border-box;
         }
-
+        
         .footer-content {
             width: 100%;
             height: 100%;
@@ -231,17 +263,17 @@
             padding: 0 80px;
             box-sizing: border-box;
         }
-
+        
         .contact-info-footer {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             padding-left: 50px;
             padding-right: 50px;
         }
-
+        
         .social-handles {
             display: flex;
             flex-direction: column;
@@ -249,19 +281,19 @@
             padding-left: 50px;
             padding-right: 50px;
         }
-
+        
         .social-handle {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
+        
         .social-handle a {
             color: white;
             text-decoration: none;
@@ -270,18 +302,18 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
-
+        
         .social-handle a:hover {
             color: var(--primary);
             transform: translateX(5px);
         }
-
+        
         .social-icon {
             width: 24px;
             height: 24px;
             transition: filter 0.3s ease;
         }
-
+        
         /* Credits */
         .credits {
             width: 100vw;
@@ -297,378 +329,38 @@
             transform: translateX(-50%);
             box-sizing: border-box;
         }
-
+        
         .credits-text {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            line-height: 1.5;
             letter-spacing: 0.15em;
             color: white;
             text-align: center;
         }
-
-        /* Responsive Adjustments */
-        @media (max-width: 1480px) {
-            .footer-content {
-                padding: 0 20px;
-            }
-        }
         
-        @media (max-width: 1200px) {
-            main {
-                padding: 24px 8vw;
-            }
-            .footer-content {
-                flex-direction: column;
-                padding: 20px;
-                text-align: center;
-            }
-            .social-handles {
-                align-items: center;
-                margin-top: 20px;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            .contact-info-footer {
-                text-align: center;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            .faq-title {
-                font-size: 32px;
-                line-height: 40px;
-            }
-            .faq-question {
-                font-size: 20px;
-                line-height: 28px;
-            }
-            .faq-answer {
-                font-size: 16px;
-                line-height: 20px;
-            }
-            .faq-item {
-                padding: 16px;
-                padding-left: 60px;
-            }
-            .question-icon {
-                left: 10px;
-                top: 18px;
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-            .ask-modal {
-                max-width: 95vw;
-                padding: 20px 10px;
-            }
-        }
-        @media (max-width: 768px) {
-            main {
-                padding: 12px 2vw;
-            }
-            nav {
-                gap: 18px;
-                flex-wrap: wrap;
-            }
-            nav a {
-                font-size: 16px;
-                padding-bottom: 2px;
-            }
-            .faq-title {
-                font-size: 20px;
-                line-height: 28px;
-            }
-            .faq-question {
-                font-size: 16px;
-                line-height: 20px;
-            }
-            .faq-answer {
-                font-size: 14px;
-                line-height: 18px;
-            }
-            .faq-item {
-                padding: 10px;
-                padding-left: 38px;
-            }
-            .question-icon {
-                left: 4px;
-                top: 8px;
-                width: 18px;
-                height: 18px;
-                font-size: 10px;
-            }
-            .footer-content {
-                padding: 10px;
-            }
-            .contact-info-footer,
-            .social-handles {
-                padding-left: 10px;
-                padding-right: 10px;
-                font-size: 14px;
-            }
-            .ask-modal {
-                max-width: 98vw;
-                padding: 10px 2vw;
-                font-size: 14px;
-            }
-        }
-
-                /* Footer */
-                footer {
-                    position: relative;
-                    width: 1440px;
-                    height: 220px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background: var(--dark);
-                    border: 4px solid var(--primary);
-                    margin-top: 40px;
-                }
-                
-                .footer-content {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 0 40px;
-                }
-                
-                .contact-info {
-                    font-family: 'Noto Rashi Hebrew', serif;
-                    font-weight: 500;
-                    font-size: 20px;
-                    line-height: 24px;
-                    color: white;
-                }
-                
-                .social-handles {
-                  text-align: right;
-              }
-              
-              .social-handle {
-                  font-family: 'Noto Rashi Hebrew', serif;
-                  font-weight: 500;
-                  font-size: 20px;
-                  line-height: 24px;
-                  color: white; 
-                  margin-bottom: 10px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: flex-end;
-                  gap: 10px;
-              }
-              
-              .social-handle a {
-                  color: white; 
-                  text-decoration: none; 
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  transition: all 0.3s ease;
-              }
-              
-              .social-handle a:hover {
-                  color: var(--primary); 
-                  transform: translateX(5px);
-              }
-              
-              .social-icon {
-                  width: 24px;
-                  height: 24px;
-                  transition: filter 0.3s ease;
-              }
-                
-                /* Credits */
-                .credits {
-                    position: relative;
-                    width: 1440px;
-                    height: 67px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background: var(--dark);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                
-                .credits-text {
-                    font-family: 'Noto Rashi Hebrew', serif;
-                    font-weight: 500;
-                    font-size: 20px;
-                    line-height: 24px;
-                    letter-spacing: 0.15em;
-                    color: white;
-                    text-align: center;
-                }
-                        
-                /* Responsive Adjustments */
-                @media (max-width: 1480px) {
-                    footer, .credits {
-                        width: 100%;
-                    }
-                }
-                
-                @media (max-width: 1200px) {
-                    main {
-                        padding: 40px;
-                    }
-                    
-                    nav {
-                        gap: 60px;
-                    }
-                    
-                    nav a {
-                        font-size: 24px;
-                    }
-                    
-                    h1 {
-                        font-size: 48px;
-                        line-height: 60px;
-                    }
-                    
-                    h2 {
-                        font-size: 72px;
-                        line-height: 90px;
-                    }
-                    
-                    p {
-                        font-size: 24px;
-                        line-height: 28px;
-                    }
-                    
-                    .btn {
-                        width: 350px;
-                        height: 70px;
-                        font-size: 28px;
-                    }
-                    
-                    .hero-section {
-                        flex-direction: column;
-                    }
-                    
-                    .hero-text {
-                        padding: 40px 0 0 0;
-                    }
-                    
-                    .image-caption {
-                        font-size: 28px;
-                        bottom: 20px;
-                        left: 20px;
-                    }
-                    
-                    .reservation-text {
-                        font-size: 48px;
-                    }
-                    
-                    .footer-content {
-                        flex-direction: column;
-                        justify-content: center;
-                        text-align: center;
-                        padding: 20px;
-                    }
-                    
-                    .social-handles {
-                        text-align: center;
-                        margin-top: 20px;
-                    }
-                    
-                    .social-handle {
-                        justify-content: center;
-                    }
-                    
-                    .grid-box {
-                        height: 300px;
-                        font-size: 28px;
-                    }
-                }
-                
-                @media (max-width: 768px) {
-                    nav {
-                        gap: 30px;
-                    }
-                    
-                    nav a {
-                        font-size: 18px;
-                    }
-                    
-                    h1 {
-                        font-size: 36px;
-                        line-height: 48px;
-                    }
-                    
-                    h2 {
-                        font-size: 48px;
-                        line-height: 60px;
-                    }
-                    
-                    p {
-                        font-size: 18px;
-                        line-height: 22px;
-                    }
-                    
-                    .btn {
-                        width: 280px;
-                        height: 60px;
-                        font-size: 22px;
-                    }
-                    
-                    .image-caption {
-                        font-size: 20px;
-                    }
-                    
-                    .hero-text h1 {
-                        font-size: 48px;
-                        line-height: 60px;
-                    }
-                    
-                    .hero-description {
-                        font-size: 18px;
-                    }
-                    
-                    .reservation-text {
-                        font-size: 36px;
-                    }
-                    
-                    .grid-4x4 {
-                        grid-template-columns: 1fr;
-                        grid-template-rows: repeat(4, 250px);
-                    }
-                    
-                    .grid-box {
-                        height: 250px;
-                        font-size: 24px;
-                    }
-                }
-        
-
         /* Ask Us Button */
         #askButton {
+            position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
             background: var(--primary);
             color: white;
             font-family: 'League Spartan', sans-serif;
-            font-size: 24px;
+            font-size: clamp(1rem, 2vw, 1.5rem);
             padding: 15px 40px;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
-        .ask-button {
-            background: var(--primary);
-            color: white;
-            font-family: 'League Spartan', sans-serif;
-            font-size: 24px;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+        
+        #askButton:hover {
+            transform: translateY(-3px);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
         }
         
         .ask-overlay {
@@ -682,6 +374,7 @@
             z-index: 9999;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
         
         .ask-modal {
@@ -692,62 +385,197 @@
             width: 90%;
             max-width: 600px;
             text-align: center;
-
+            position: relative;
+            animation: modalFadeIn 0.4s ease-out;
         }
-
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .ask-title {
             font-family: 'Lobster Two', cursive;
-            font-size: 32px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: white;
             margin-bottom: 20px;
         }
-            
+        
         .ask-input {
             width: 100%;
             height: 120px;
-            font-size: 18px;
+            font-size: 1rem;
             font-family: 'Noto Sans', sans-serif;
             padding: 15px;
             border-radius: 10px;
             border: none;
             margin-bottom: 20px;
             resize: none;
+        }
+        
+        .ask-submit {
+            background-color: var(--primary);
+            color: white;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .ask-submit:hover {
+            background-color: #e05e00;
+            transform: translateY(-2px);
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-button:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .logo {
+                padding-top: 20px;
+                letter-spacing: 3px;
             }
             
-            .ask-submit {
-                background-color: var(--primary);
-                color: white;
-                font-family: 'League Spartan', sans-serif;
-                font-size: 20px;
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 100%;
+                background: var(--overlay);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                backdrop-filter: blur(10px);
+            }
+            
+            .main-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .main-nav a {
+                font-size: 1.5rem;
+                padding: 10px 20px;
+                animation: none;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            
+            .main-nav.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .main-nav a:nth-child(1) { transition-delay: 0.1s; }
+            .main-nav a:nth-child(2) { transition-delay: 0.15s; }
+            .main-nav a:nth-child(3) { transition-delay: 0.2s; }
+            .main-nav a:nth-child(4) { transition-delay: 0.25s; }
+            .main-nav a:nth-child(5) { transition-delay: 0.3s; }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        
+            /* FAQ Mobile Adjustments */
+            main {
+                padding: 30px 20px;
+            }
+            
+            .faq-item {
+                padding: 20px;
+                padding-left: 70px;
+            }
+            
+            .question-icon {
+                left: 15px;
+                top: 25px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                padding: 30px 20px;
+                text-align: center;
+            }
+            
+            .contact-info-footer {
+                padding: 0;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .social-handles {
+                align-items: center;
+                padding: 0;
+            }
+            
+            .social-handle {
+                justify-content: center;
+            }
+            
+            #askButton {
                 padding: 12px 30px;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.5rem;
             }
             
-            .close-button {
-                position: absolute;
-                top: 20px;
-                right: 25px;
-                font-size: 28px;
-                color: white;
-                cursor: pointer;
+            .faq-item {
+                padding-left: 60px;
             }
+            
+            .question-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+            
+            .main-nav a {
+                font-size: 1.25rem;
+            }
+        }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const askButton = document.getElementById('askButton');
-            const askOverlay = document.getElementById('askOverlay');
-    
-            askButton.addEventListener('click', () => {
-                askOverlay.style.display = 'flex';
-            });
-    
-            window.closeOverlay = function () {
-                askOverlay.style.display = 'none';
-            };
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -755,7 +583,14 @@
         <div class="logo-container">
             <a href="index.html" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
         </div>
-        <nav>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        
+        <nav class="main-nav">
             <a href="index.html">HOME</a>
             <a href="aboutUs.html">ABOUT US</a>
             <a href="catalog.html">CATALOG</a>
@@ -867,5 +702,81 @@
     <div class="credits">
         <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            function toggleMenu() {
+                const isOpening = !mainNav.classList.contains('active');
+
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+
+                document.body.style.overflow = isOpening ? 'hidden' : '';
+
+                if (isOpening) {
+                    const askOverlay = document.getElementById('askOverlay');
+                    if (askOverlay.style.display === 'flex') {
+                        askOverlay.style.display = 'none';
+                    }
+                }
+            }
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation(); 
+                toggleMenu();
+            });
+
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (mainNav.classList.contains('active') && 
+                    !e.target.closest('.main-nav') && 
+                    !e.target.closest('.mobile-menu-toggle')) {
+                    toggleMenu();
+                }
+            });
+
+            const askButton = document.getElementById('askButton');
+            const askOverlay = document.getElementById('askOverlay');
+            
+            askButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                askOverlay.style.display = 'flex';
+                
+                if (mainNav.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+            
+            window.closeOverlay = function() {
+                askOverlay.style.display = 'none';
+            };
+
+            document.addEventListener('click', function(e) {
+                if (askOverlay.style.display === 'flex' && 
+                    !e.target.closest('.ask-modal') && 
+                    !e.target.closest('#askButton')) {
+                    askOverlay.style.display = 'none';
+                }
+            });
+
+            function adjustLogo() {
+                const logo = document.querySelector('.logo');
+                logo.style.paddingTop = window.innerWidth < 768 ? '20px' : '50px';
+            }
+            
+            window.addEventListener('resize', adjustLogo);
+            adjustLogo(); 
+        });
+    </script>
 </body>
 </html>

@@ -28,6 +28,7 @@
             color: var(--text);
             background: white;
             line-height: 33px;
+            overflow-x: hidden;
         }
         
         /* Header */
@@ -55,59 +56,86 @@
             font-style: normal;
         }
 
+        /* Logo */
         .logo-container {
             position: absolute;
             top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 100;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
         .logo {
             font-family: 'Norwester', sans-serif;
-            font-size: 84px;
-            padding-top: 50px;
             font-weight: bold;
             letter-spacing: 5px;
+            padding-top: 50px;
             color: white;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
+            font-size: clamp(2.5rem, 8vw, 5.25rem);
         }
 
         .logo .amp {
             color: #d35400;
         }
-        
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .burger-line {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
         /* Navigation */
-        nav {
+        .main-nav {
             position: absolute;
             bottom: 20px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 113px;
+            gap: clamp(1rem, 6vw, 7rem);
             z-index: 10;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        opacity 0.4s ease;
         }
         
-        nav a {
+        .main-nav a {
             color: var(--light);
             font-family: 'Noto Sans', sans-serif;
-            font-style: normal;
             font-weight: 500;
-            font-size: 30px;
+            font-size: clamp(1rem, 2vw, 1.875rem);
             line-height: 41px;
             text-decoration: none;
             position: relative;
             padding-bottom: 5px;
+            white-space: nowrap;
         }
         
-        nav a:hover {
+        .main-nav a:hover {
             color: var(--light);
         }
         
-        nav a::after {
+        .main-nav a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -118,16 +146,15 @@
             transition: width 0.3s;
         }
         
-        nav a:hover::after {
+        .main-nav a:hover::after {
             width: 100%;
         }
         
-        /* Active page indicator */
-        nav a.active {
+        .main-nav a.active {
             color: var(--light);
         }
         
-        nav a.active::after {
+        .main-nav a.active::after {
             width: 100%;
         }
         
@@ -140,17 +167,17 @@
             background: var(--light);
         }
         
-        /* Modified Hero Section */
+        /* Hero Section */
         .hero-section {
             display: flex;
-            align-items: flex-start;
+            flex-wrap: wrap;
+            align-items: center;
             gap: 60px;
             margin-bottom: 120px;
-            min-height: 600px;
         }
         
         .hero-image {
-            flex: 1;
+            flex: 1 1 500px;
             border-radius: 25px;
             overflow: hidden;
             box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.25);
@@ -170,33 +197,45 @@
             left: 40px;
             color: white;
             font-family: 'League Spartan', sans-serif;
-            font-size: 36px;
+            font-size: clamp(1rem, 2vw, 2.25rem);
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
             max-width: 80%;
         }
         
         .hero-text {
-            flex: 1;
+            flex: 1 1 500px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 0;
-            padding-left: 40px;
         }
         
-        .hero-text h1 {
-            margin-top: 0;
-            margin-bottom: 30px;
-            text-align: left;
+        /* Heading fonts */
+        h1 {
             font-family: 'Lobster Two', cursive;
-            font-size: 64px;
-            line-height: 80px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
         }
         
-        .hero-description {
-            margin-top: 20px;
-            font-size: 24px;
-            line-height: 1.4;
+        h2 {
+            font-family: 'Lobster Two', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+        
+        p {
+            font-family: 'League Spartan', sans-serif;
+            font-style: normal;
+            font-weight: 200;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            line-height: 1.5;
+            text-align: justify;
+            margin-bottom: 30px;
         }
         
         /* reservation box*/
@@ -239,7 +278,7 @@
         .reservation-text {
             color: white;
             font-family: 'Lobster Two', cursive;
-            font-size: 64px;
+            font-size: clamp(1.5rem, 4vw, 4rem);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             transition: transform 0.3s;
         }
@@ -257,99 +296,7 @@
             transform: translateY(-5px);
         }
         
-        .section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 60px;
-            margin-bottom: 120px;
-        }
-        
-        .section.reverse {
-            flex-direction: row-reverse;
-        }
-        
-        .section-image {
-            flex: 1 1 500px;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 15px 15px 15px 5px rgba(0, 0, 0, 0.25);
-        }
-        
-        .section-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .section-content {
-            flex: 1 1 500px;
-        }
-        
-        /* Heading fonts */
-        h1 {
-            font-family: 'Lobster Two', cursive;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 64px;
-            line-height: 80px;
-            margin-bottom: 40px;
-        }
-        
-        h2 {
-            font-family: 'Lobster Two', cursive;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 96px;
-            line-height: 120px;
-            margin-bottom: 40px;
-        }
-        
-        p {
-            font-family: 'League Spartan', sans-serif;
-            font-style: normal;
-            font-weight: 200;
-            font-size: 36px;
-            line-height: 1.5;
-            text-align: justify;
-            margin-bottom: 30px;
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary);
-            color: white;
-            width: 474px;
-            height: 90px;
-            border-radius: 15px;
-            font-family: 'League Spartan', sans-serif;
-            font-weight: 600;
-            font-size: 36px;
-            line-height: 33px;
-            text-decoration: none;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            transition: transform 0.3s;
-            margin-top: 40px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-        }
-        
         /* Special Sections */
-        .highlight-section {
-            background-color: var(--primary);
-            padding: 60px;
-            margin: 60px 0;
-            color: white;
-            text-align: center;
-        }
-
         .grid-4x4 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -364,10 +311,10 @@
             border-radius: 0;
             font-family: 'Lobster Two', cursive;
             font-weight: 400;
-            font-size: 62px;
+            font-size: clamp(1.5rem, 3vw, 3.875rem);
             line-height: 1.2;
             width: 100%;
-            height: 400px;
+            height: clamp(150px, 30vw, 400px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -390,13 +337,11 @@
         .box1 {
             background-image: url('bondibourkehouse.jpg');
             cursor: pointer;
-
         }
         
         .box4 {
             background-image: url('bondiNews.jpg');
             cursor: pointer;
-
         }
         
         .box1::before, .box4::before {
@@ -419,15 +364,16 @@
         .box2 {
             background: #1C1C1C;
             color: #FFD700;
-            font-size: 28px;
+            font-size: clamp(0.875rem, 2vw, 1.75rem);
         }
         
         .box3 {
             background-color: #D35400;
             color: white;
-            font-size: 24px;
+            font-size: clamp(0.875rem, 2vw, 1.5rem);
         }
-                /* Footer */
+        
+        /* Footer */
         footer {
             width: 100vw;
             min-width: 100vw;
@@ -441,6 +387,7 @@
             transform: translateX(-50%);
             box-sizing: border-box;
         }
+        
         .footer-content {
             width: 100%;
             height: 100%;
@@ -450,15 +397,17 @@
             padding: 0 80px;
             box-sizing: border-box;
         }
+        
         .contact-info-footer {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             padding-left: 50px;
             padding-right: 50px;
         }
+        
         .social-handles {
             display: flex;
             flex-direction: column;
@@ -466,17 +415,19 @@
             padding-left: 50px;
             padding-right: 50px;
         }
+        
         .social-handle {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
+        
         .social-handle a {
             color: white;
             text-decoration: none;
@@ -485,15 +436,18 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
+        
         .social-handle a:hover {
             color: var(--primary);
             transform: translateX(5px);
         }
+        
         .social-icon {
             width: 24px;
             height: 24px;
             transition: filter 0.3s ease;
         }
+        
         .credits {
             width: 100vw;
             min-width: 100vw;
@@ -509,11 +463,12 @@
             box-sizing: border-box;
             text-align: center;
         }
+        
         .credits-text {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            line-height: 1.5;
             letter-spacing: 0.15em;
             color: white;
             text-align: center;
@@ -521,129 +476,8 @@
             margin: 0 auto;
             display: block;
         }
-        footer[style], .footer-content[style], .credits[style] {
-            width: unset !important;
-            left: unset !important;
-            transform: unset !important;
-            position: unset !important;
-            max-width: unset !important;
-            margin: unset !important;
-        }
-        @media (max-width: 1480px) {
-            .footer-content {
-                padding: 0 20px;
-            }
-        }
-        @media (max-width: 1200px) {
-            main {
-                padding: 24px 8vw;
-            }
-            .hero-section {
-                flex-direction: column;
-                gap: 30px;
-                min-height: unset;
-            }
-            .hero-text {
-                padding-left: 0;
-                padding-top: 0;
-            }
-            .section {
-                flex-direction: column;
-                gap: 30px;
-            }
-            .footer-content {
-                flex-direction: column;
-                padding: 20px;
-                text-align: center;
-            }
-            .social-handles {
-                align-items: center;
-                margin-top: 20px;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            .contact-info-footer {
-                text-align: center;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            .grid-4x4 {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: repeat(2, 200px);
-            }
-            .grid-box {
-                font-size: 24px;
-                height: 200px;
-            }
-            .reservation-modal {
-                max-width: 95vw;
-                padding: 24px 10px 18px 10px;
-            }
-            .popup-modal {
-                max-width: 95vw;
-                padding: 24px 10px 18px 10px;
-            }
-        }
-        @media (max-width: 768px) {
-            main {
-                padding: 16px 2vw;
-            }
-            nav {
-                gap: 18px;
-                flex-wrap: wrap;
-            }
-            nav a {
-                font-size: 16px;
-                padding-bottom: 2px;
-            }
-            .hero-section {
-                gap: 18px;
-            }
-            .hero-text h1,
-            h1 {
-                font-size: 32px;
-                line-height: 40px;
-            }
-            .image-caption {
-                font-size: 16px;
-                left: 10px;
-                bottom: 10px;
-            }
-            .section,
-            .section.reverse {
-                gap: 18px;
-                padding: 0;
-            }
-            .section-image img {
-                height: auto;
-                min-height: 180px;
-            }
-            .grid-4x4 {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 120px);
-            }
-            .grid-box {
-                font-size: 16px;
-                height: 120px;
-                padding: 8px;
-            }
-            .footer-content {
-                padding: 10px;
-            }
-            .contact-info-footer,
-            .social-handles {
-                padding-left: 10px;
-                padding-right: 10px;
-                font-size: 14px;
-            }
-            .reservation-modal,
-            .popup-modal {
-                max-width: 98vw;
-                padding: 12px 2vw 12px 2vw;
-                font-size: 14px;
-            }
-        }
 
+        /* Modal Styles */
         .reservation-overlay-bg {
             display: none;
             position: fixed;
@@ -655,6 +489,7 @@
             justify-content: center;
             align-items: center;
         }
+        
         .reservation-modal {
             background: var(--dark);
             border-radius: 20px;
@@ -668,13 +503,15 @@
             flex-direction: column;
             gap: 18px;
         }
+        
         .reservation-modal h2 {
             font-family: 'Lobster Two', cursive;
-            font-size: 42px;
+            font-size: clamp(1.5rem, 4vw, 2.625rem);
             color: var(--primary);
             margin-bottom: 10px;
             text-align: center;
         }
+        
         .reservation-modal label {
             font-family: 'Noto Sans', sans-serif;
             font-size: 13px;
@@ -682,6 +519,7 @@
             margin-bottom: 4px;
             text-transform: uppercase;
         }
+        
         .reservation-modal input[type="text"],
         .reservation-modal input[type="email"],
         .reservation-modal input[type="date"] {
@@ -692,6 +530,7 @@
             font-size: 16px;
             margin-bottom: 12px;
         }
+        
         .reservation-modal .reservation-submit-btn {
             background: var(--primary);
             color: white;
@@ -705,9 +544,11 @@
             width: 100%;
             transition: background 0.2s;
         }
+        
         .reservation-modal .reservation-submit-btn:hover {
             background: #b94a00;
         }
+        
         .reservation-modal .close-reservation {
             position: absolute;
             top: 15px;
@@ -732,6 +573,7 @@
             justify-content: center;
             align-items: center;
         }
+        
         .popup-modal {
             background: var(--dark);
             color: white;
@@ -743,6 +585,7 @@
             text-align: center;
             position: relative;
         }
+        
         .popup-modal .close-popup {
             position: absolute;
             top: 12px;
@@ -753,10 +596,148 @@
             background: none;
             border: none;
         }
+        
         .popup-modal p {
             font-family: 'League Spartan', sans-serif;
-            font-size: 20px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             margin: 0;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .logo {
+                padding-top: 20px;
+                letter-spacing: 3px;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 100%;
+                background: var(--overlay);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(5px);
+            }
+            
+            .main-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .main-nav a {
+                font-size: 1.5rem;
+                padding: 10px 0;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            
+            .main-nav.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .main-nav a:nth-child(1) { transition-delay: 0.1s; }
+            .main-nav a:nth-child(2) { transition-delay: 0.15s; }
+            .main-nav a:nth-child(3) { transition-delay: 0.2s; }
+            .main-nav a:nth-child(4) { transition-delay: 0.25s; }
+            .main-nav a:nth-child(5) { transition-delay: 0.3s; }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            main {
+                padding: 30px 20px;
+            }
+            
+            .hero-section,
+            .section,
+            .section.reverse {
+                flex-direction: column;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+            
+            .hero-image img,
+            .section-image img {
+                height: auto !important;
+                max-height: 400px;
+            }
+            
+            .image-caption {
+                bottom: 20px;
+                left: 20px;
+                font-size: 1.2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                padding: 30px 20px;
+                text-align: center;
+            }
+            
+            .contact-info-footer {
+                padding: 0;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .social-handles {
+                align-items: center;
+                padding: 0;
+            }
+            
+            .grid-4x4 {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 150px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .main-nav a {
+                font-size: 1.25rem;
+            }
+            
+            .hero-image img,
+            .section-image img {
+                max-height: 300px;
+            }
+            
+            .grid-4x4 {
+                grid-template-rows: repeat(4, 120px);
+            }
+            
+            .grid-box {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -764,10 +745,17 @@
     <header>
         <div class="header-overlay"></div>
         <div class="logo-container">
-            <a href="#" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
+            <a href="index.html" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
         </div>
-        <nav>
-            <a href="#" class="active">HOME</a>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        
+        <nav class="main-nav">
+            <a href="index.html" class="active">HOME</a>
             <a href="aboutUs.html">ABOUT US</a>
             <a href="catalog.html">CATALOG</a>
             <a href="faq.html">FAQ</a>
@@ -783,9 +771,7 @@
             </div>
             <div class="hero-text">
                 <h1>A Taste of Australia</h1>
-                <div class="hero-description">
-                    <p>Aussie comfort food, wine, & small plates served in a chic and airy space complete with a private room fit for every occasion.</p>
-                </div>
+                <p>Aussie comfort food, wine, & small plates served in a chic and airy space complete with a private room fit for every occasion.</p>
                 <div class="reservation-container">
                     <a href="#" class="reservation-image">
                         <img src="bondibourketable.jpg" alt="Reservation Area">
@@ -810,6 +796,7 @@
                 <button type="submit" class="reservation-submit-btn">Submit</button>
             </form>
         </div>
+        
         <section class="boxes-section">
             <div class="grid-4x4">
                 <div class="grid-box box1" id="upcomingEventsBox">Upcoming Events</div>
@@ -861,8 +848,41 @@
     <div class="credits">
         <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
     </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Functionality
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            function toggleMenu() {
+                const isOpening = !mainNav.classList.contains('active');
+                
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                document.body.style.overflow = isOpening ? 'hidden' : '';
+            }
+            
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (mainNav.classList.contains('active') && 
+                    !e.target.closest('.main-nav') && 
+                    !e.target.closest('.mobile-menu-toggle')) {
+                    toggleMenu();
+                }
+            });
 
             // reservation
             const reservationBtn = document.querySelector('.reservation-image');

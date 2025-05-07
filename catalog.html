@@ -1,312 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bondi&Bourke</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=League+Spartan:wght@200;600&family=Noto+Sans:wght@500&family=Noto+Rashi+Hebrew:wght@500&display=swap" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bondi&Bourke - Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=League+Spartan:wght@200;600&family=Noto+Sans:wght@500&family=Noto+Rashi+Hebrew:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D35400;
+            --dark: #1C1C1C;
+            --light: #F6F4F1;
+            --text: #1F1F1F;
+            --overlay: rgba(43, 43, 43, 0.7);
+        }
 
-  <style>
-    :root {
-      --primary: #D35400;
-      --dark: #1C1C1C;
-      --light: #F6F4F1;
-      --text: #1F1F1F;
-      --overlay: rgba(43, 43, 43, 0.7);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 200;
+            color: var(--text);
+            background: white;
+            line-height: 33px;
+            overflow-x: hidden;
+        }
 
-    body {
-      font-family: 'League Spartan', sans-serif;
-      font-weight: 200;
-      color: var(--text);
-      background: white;
-      line-height: 33px;
-    }
+        /* Header */
+        header {
+            position: relative;
+            height: 240px;
+            background: url('bondibourkemenuheader.jpg') center/cover;
+            filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
+        }
 
-    header {
-      position: relative;
-      height: 240px;
-      background: url('bondibourkemenuheader.jpg') center/cover;
-      filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.25));
-    }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay);
+            box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
 
-    .header-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--overlay);
-      box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.2);
-    }
+        @font-face {
+            font-family: 'Norwester';
+            src: url('norwester.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    @font-face {
-      font-family: 'Norwester';
-      src: url('norwester.otf') format('opentype');
-    }
+        /* Logo */
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-    .logo-container {
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding-top: 50px;
+        .logo {
+            font-family: 'Norwester', sans-serif;
+            font-weight: bold;
+            letter-spacing: 5px;
+            padding-top: 50px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: clamp(2.5rem, 8vw, 5.25rem);
+        }
 
-      z-index: 10;
-      text-align: center;
-    }
+        .logo .amp {
+            color: var(--primary);
+        }
 
-    .logo {
-      font-family: 'Norwester', sans-serif;
-      font-size: 84px;
-      padding-top: 50px;
-      font-weight: bold;
-      letter-spacing: 5px;
-      color: white;
-      text-decoration: none;
-    }
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
 
-    .logo .amp {
-      color: var(--primary);
-    }
+        .burger-line {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
 
-    nav {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 113px;
-      z-index: 10;
-    }
+        /* Navigation */
+        .main-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 6vw, 7rem);
+            z-index: 10;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), 
+                        opacity 0.4s ease;
+        }
 
-    nav a {
-      color: var(--light);
-      font-family: 'Noto Sans', sans-serif;
-      font-weight: 500;
-      font-size: 30px;
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 5px;
-    }
+        .main-nav a {
+            color: var(--light);
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 500;
+            font-size: clamp(1rem, 2vw, 1.875rem);
+            line-height: 41px;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+            white-space: nowrap;
+        }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: 0;
-      left: 0;
-      background-color: white;
-      transition: width 0.3s;
-    }
+        .main-nav a:hover {
+            color: var(--light);
+        }
 
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
 
-    main {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 60px 80px;
-      background: var(--light);
-    }
+        .main-nav a:hover::after {
+            width: 100%;
+        }
 
-    .specials-section {
-      display: flex;
-      background: white;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 60px;
-    }
+        .main-nav a.active {
+            color: var(--light);
+        }
 
-    .specials-section img {
-      max-width: 100%;
-      width: 500px;
-    }
+        .main-nav a.active::after {
+            width: 100%;
+        }
 
-    .specials-text {
-      flex: 1;
-      background: var(--dark);
-      color: white;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+        /* Main Content */
+        main {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 60px 80px;
+            background: var(--light);
+        }
 
-    .specials-text h1 {
-      color: var(--primary);
-      font-size: 20px;
-      text-align: center;
-      margin-bottom: 10px;
-    }
+        /* Specials Section */
+        .specials-section {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+        }
 
-    .specials-text h2 {
-      font-family: 'Lobster Two', cursive;
-      font-size: 46px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+        .specials-section img {
+            flex: 1 1 500px;
+            max-width: 100%;
+            object-fit: cover;
+        }
 
-    .specials-text p {
-      font-size: 22px;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+        .specials-text {
+            flex: 1 1 500px;
+            background: var(--dark);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    .specials-buttons {
-      display: flex;
-      gap: 20px;
-      margin: auto;
-    }
+        .specials-text h1 {
+            color: var(--primary);
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-    .specials-buttons button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 14px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+        .specials-text h2 {
+            font-family: 'Lobster Two', cursive;
+            font-size: clamp(1.5rem, 4vw, 2.875rem);
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    .specials-buttons button:hover {
-      transform: scale(1.05);
-      background: #a84300;
-    }
+        .specials-text p {
+            font-size: clamp(1rem, 2vw, 1.375rem);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
 
-    .food-items {
-      display: flex;
-      gap: 30px;
-      justify-content: space-between;
-    }
+        .specials-buttons {
+            display: flex;
+            gap: 20px;
+            margin: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .food-item {
-      text-align: center;
-      flex: 1;
-    }
+        .specials-buttons button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-    .food-item img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
+        .specials-buttons button:hover {
+            transform: scale(1.05);
+            background: #a84300;
+        }
 
-    .food-item img:hover {
-      transform: scale(1.03);
-    }
+        /* Food Items */
+        .food-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
 
-    .food-item h3 {
-      margin-top: 15px;
-      font-size: 30px;
-      font-weight: 600;
-    }
+        .food-item {
+            text-align: center;
+            flex: 1 1 300px;
+        }
 
-    .food-item p {
-      font-size: 26px;
-    }
+        .food-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
 
-    .menu-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+        .food-item img:hover {
+            transform: scale(1.03);
+        }
 
-    .menu-overlay img {
-      max-width: 100%;
-      max-height: 100%;
-      border: 4px solid white;
-      border-radius: 10px;
-      box-shadow: 0 0 25px rgba(255,255,255,0.3);
-    }
+        .food-item h3 {
+            margin-top: 15px;
+            font-size: clamp(1.25rem, 3vw, 1.875rem);
+            font-weight: 600;
+        }
 
-    .menu-overlay .close-btn {
-      position: absolute;
-      top: 40px;
-      right: 60px;
-      color: white;
-      font-size: 50px;
-      cursor: pointer;
-    }
+        .food-item p {
+            font-size: clamp(1rem, 2vw, 1.625rem);
+        }
 
-    .arrow {
-      position: absolute;
-      top: 50%;
-      font-size: 60px;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      transform: translateY(-50%);
-      padding: 10px;
-    }
+        /* Food Gallery */
+        .food-gallery-section {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--dark);
+        }
 
-    .arrow.left {
-      left: 50px;
-    }
+        .food-gallery-section h2 {
+            color: white;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
 
-    .arrow.right {
-      right: 50px;
-    }
+        .food-gallery-section h2::before,
+        .food-gallery-section h2::after {
+            content: '';
+            display: inline-block;
+            height: 2px;
+            width: clamp(30px, 5vw, 60px);
+            background-color: white;
+            vertical-align: middle;
+            margin: 0 20px;
+        }
 
-    .food-gallery-section {
-        padding: 60px 0;
-        text-align: center;
-        background: #1C1C1C;
-      }
-      
-      .food-gallery-section h2 {
-        color: white;
-        font-size: 40px;
-        margin-bottom: 40px;
-        position: relative;
-        display: inline-block;
-      }
-      
-      .food-gallery-section h2::before,
-      .food-gallery-section h2::after {
-        content: '';
-        display: inline-block;
-        height: 2px;
-        width: 60px;
-        background-color: white;
-        vertical-align: middle;
-        margin: 0 20px;
-      }
-      
-      .food-gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 25px;
-        padding: 0 60px;
-      }
-      
-      .food-gallery-grid img {
-        width: 100%;
-        height: 220px;
-        border-radius: 10px;
-        object-fit: cover; 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease;
-        aspect-ratio: 4/3; 
-      }
+        .food-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 0 60px;
+        }
+
+        .food-gallery-grid img {
+            width: 100%;
+            height: 220px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .menu-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 4px solid white;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(255,255,255,0.3);
+        }
+
+        .menu-overlay .close-btn {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            transform: translateY(-50%);
+            padding: 10px;
+        }
+
+        .arrow.left {
+            left: 50px;
+        }
+
+        .arrow.right {
+            right: 50px;
+        }
+
         /* Footer */
         footer {
             width: 100vw;
@@ -321,7 +375,7 @@
             transform: translateX(-50%);
             box-sizing: border-box;
         }
-        
+
         .footer-content {
             width: 100%;
             height: 100%;
@@ -331,17 +385,17 @@
             padding: 0 80px;
             box-sizing: border-box;
         }
-        
+
         .contact-info-footer {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             padding-left: 50px;
             padding-right: 50px;
         }
-        
+
         .social-handles {
             display: flex;
             flex-direction: column;
@@ -349,19 +403,19 @@
             padding-left: 50px;
             padding-right: 50px;
         }
-        
+
         .social-handle {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5;
             color: white;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .social-handle a {
             color: white;
             text-decoration: none;
@@ -370,18 +424,18 @@
             gap: 10px;
             transition: all 0.3s ease;
         }
-        
+
         .social-handle a:hover {
             color: var(--primary);
             transform: translateX(5px);
         }
-        
+
         .social-icon {
             width: 24px;
             height: 24px;
             transition: filter 0.3s ease;
         }
-        
+
         /* Credits */
         .credits {
             width: 100vw;
@@ -396,274 +450,375 @@
             right: 0;
             transform: translateX(-50%);
             box-sizing: border-box;
+            text-align: center;
         }
-        
+
         .credits-text {
             font-family: 'Noto Rashi Hebrew', serif;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
+            font-size: clamp(0.875rem, 2vw, 1.25rem);
+            line-height: 1.5;
             letter-spacing: 0.15em;
             color: white;
             text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
         }
-                
-        /* Responsive Adjustments */
-        @media (max-width: 1480px) {
-            .footer-content {
-                padding: 0 20px;
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .logo {
+                padding-top: 20px;
+                letter-spacing: 3px;
             }
-        }
-        
-        @media (max-width: 1200px) {
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 100%;
+                background: var(--overlay);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(5px);
+            }
+            
+            .main-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .main-nav a {
+                font-size: 1.5rem;
+                padding: 10px 0;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            
+            .main-nav.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .main-nav a:nth-child(1) { transition-delay: 0.1s; }
+            .main-nav a:nth-child(2) { transition-delay: 0.15s; }
+            .main-nav a:nth-child(3) { transition-delay: 0.2s; }
+            .main-nav a:nth-child(4) { transition-delay: 0.25s; }
+            .main-nav a:nth-child(5) { transition-delay: 0.3s; }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu-toggle.active .burger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
             main {
-                padding: 24px 8vw;
+                padding: 30px 20px;
             }
+            
             .specials-section {
                 flex-direction: column;
-                gap: 20px;
             }
-            .specials-section img {
-                width: 100%;
-                min-width: 0;
-                max-width: 100%;
+            
+            .specials-text {
+                padding: 30px 20px;
             }
+            
+            .food-gallery-grid {
+                padding: 0 20px;
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-overlay .close-btn {
+                top: 20px;
+                right: 20px;
+                font-size: 40px;
+            }
+            
+            .arrow {
+                font-size: 40px;
+            }
+            
+            .arrow.left {
+                left: 20px;
+            }
+            
+            .arrow.right {
+                right: 20px;
+            }
+            
             .footer-content {
                 flex-direction: column;
-                padding: 20px;
+                padding: 30px 20px;
                 text-align: center;
             }
+            
+            .contact-info-footer {
+                padding: 0;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
             .social-handles {
                 align-items: center;
-                margin-top: 20px;
-                padding-left: 30px;
-                padding-right: 30px;
+                padding: 0;
             }
-            .contact-info-footer {
-                text-align: center;
-                padding-left: 30px;
-                padding-right: 30px;
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.5rem;
             }
-            .food-gallery-grid {
-                padding: 0 10px;
-                gap: 10px;
+            
+            .main-nav a {
+                font-size: 1.25rem;
             }
+            
+            .food-item {
+                flex: 1 1 100%;
+            }
+            
             .food-gallery-grid img {
-                height: 160px;
-                aspect-ratio: 4/3;
+                height: 150px;
+            }
+            
+            .menu-overlay .close-btn {
+                top: 15px;
+                right: 15px;
+                font-size: 30px;
+            }
+            
+            .arrow {
+                font-size: 30px;
+            }
+            
+            .arrow.left {
+                left: 10px;
+            }
+            
+            .arrow.right {
+                right: 10px;
             }
         }
-        
-        @media (max-width: 768px) {
-            main {
-                padding: 12px 2vw;
-            }
-            nav {
-                gap: 18px;
-                flex-wrap: wrap;
-            }
-            nav a {
-                font-size: 16px;
-                padding-bottom: 2px;
-            }
-            .specials-section {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .specials-section img {
-                width: 100%;
-                min-width: 0;
-                max-width: 100%;
-            }
-            .food-items {
-                flex-direction: column;
-                gap: 16px;
-            }
-            .food-item h3 {
-                font-size: 18px;
-            }
-            .food-item p {
-                font-size: 16px;
-            }
-            .food-gallery-section h2 {
-                font-size: 20px;
-                margin-bottom: 20px;
-            }
-            .food-gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-                padding: 0 2vw;
-            }
-            .food-gallery-grid img {
-                height: 100px;
-                aspect-ratio: 4/3;
-            }
-            .footer-content {
-                padding: 10px;
-            }
-            .contact-info-footer,
-            .social-handles {
-                padding-left: 10px;
-                padding-right: 10px;
-                font-size: 14px;
-            }
-        }
-
-  </style>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuOverlay = document.getElementById('menuOverlay');
-      const menuImage = document.getElementById('menuImage');
-      const closeBtn = document.querySelector('.close-btn');
-      const leftArrow = document.querySelector('.arrow.left');
-      const rightArrow = document.querySelector('.arrow.right');
-      const viewMenuBtn = document.querySelector('.specials-buttons button:last-child');
-
-      const images = [
-        'bondimenu1.jpg',
-        'bondimenu2.jpg',
-        'bondimenu3.jpg',
-        'bondimenu5.jpg',
-        'bondimenu6.jpg'
-      ];
-
-      let currentIndex = 0;
-
-      function showImage(index) {
-        menuImage.src = images[index];
-      }
-
-      viewMenuBtn.addEventListener('click', () => {
-        menuOverlay.style.display = 'flex';
-        currentIndex = 0;
-        showImage(currentIndex);
-      });
-
-      closeBtn.addEventListener('click', () => {
-        menuOverlay.style.display = 'none';
-      });
-
-      leftArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage(currentIndex);
-      });
-
-      rightArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          menuOverlay.style.display = 'none';
-        }
-      });
-    });
-  </script>
+    </style>
 </head>
 
 <body>
-  <header>
-    <div class="header-overlay"></div>
-    <div class="logo-container">
-      <a href="#" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
-    </div>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="aboutUs.html">ABOUT US</a>
-      <a href="catalog.html" class="active">CATALOG</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-  </header>
-
-  <main>
-    <div class="specials-section">
-      <img src="bondiburger.jpg" alt="Aussie Beef Burger" />
-      <div class="specials-text">
-        <h1>------------- SPECIAL OFFER -------------</h1>
-        <h2>Aussie Beef Burger</h2>
-        <p>A juicy Australian beef patty stacked with cheddar, crisp lettuce, tomato, and smoky aioli on a toasted brioche bun. Served with golden fries for the perfect bite.</p>
-        <div class="specials-buttons">
-          <button>LEARN MORE</button>
-          <button>VIEW MENU</button>
+    <header>
+        <div class="header-overlay"></div>
+        <div class="logo-container">
+            <a href="index.html" class="logo">BONDI<span class="amp">&</span>BOURKE</a>
         </div>
-      </div>
-    </div>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        
+        <nav class="main-nav">
+            <a href="index.html">HOME</a>
+            <a href="aboutUs.html">ABOUT US</a>
+            <a href="catalog.html" class="active">CATALOG</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
 
-    <div class="food-items">
-      <div class="food-item">
-        <img src="bondiprawn.png" alt="Prawn Carbonara" />
-        <h3>PRAWN CARBONARA</h3>
-        <p>₱ 454.00</p>
-      </div>
-      <div class="food-item">
-        <img src="bondirisoto.png" alt="Seafood Rosito" />
-        <h3>SEAFOOD ROSITO</h3>
-        <p>₱ 299.00</p>
-      </div>
-      <div class="food-item">
-        <img src="bondivelvet.png" alt="Red Velvet Gateu" />
-        <h3>RED VELVET GATEU</h3>
-        <p>₱ 250.00</p>
-      </div>
-    </div>
-    <section class="food-gallery-section">
-        <h2>FOOD GALLERY</h2>
-        <div class="food-gallery-grid">
-          <img src="bondigallery1.jpg"/>
-          <img src="bondigallery2.jpg">
-          <img src="bondigallery3.jpg">
-          <img src="bondigallery4.jpg">
-          <img src="bondigallery5.jpg">
-          <img src="bondigallery6.jpg">
-          <img src="bondigallery7.jpg">
-          <img src="bondigallery8.jpg">
-          <img src="bondigallery9.jpg">
-        </div>
-      </section>
-  </main>
-
-  <div id="menuOverlay" class="menu-overlay">
-    <span class="close-btn">&times;</span>
-    <img id="menuImage" src="bondimenu1.jpg" alt="Menu Image" />
-    <div class="arrow left">&#10094;</div>
-    <div class="arrow right">&#10095;</div>
-  </div>
-  <footer>
-    <div class="footer-content">
-        <div class="contact-info-footer">
-            115 P. Pelayo Street, Poblacion District<br>
-            Davao City, 8000 Davao del Sur<br>
-            Philippines<br>
-            M: 0998-593-3763<br>
-            E: info@bondibourke.com
-        </div>
-        <div class="social-handles">
-            <div class="social-handle">
-                <a href="https://www.facebook.com/bondiandbourkedavao" rel="noopener noreferrer">
-                    <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
-                    Bondi&Bourke Davao
-                </a>
-            </div>
-            <div class="social-handle">
-                <a href="https://instagram.com/bondibourkeph" rel="noopener noreferrer">
-                    <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
-                    @bondibourkeph
-                </a>
-            </div>
-            <div class="social-handle">
-                <a href="https://twitter.com/bondibourkeph" rel="noopener noreferrer">
-                    <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
-                    @bondibourkeph
-                </a>
+    <main>
+        <div class="specials-section">
+            <img src="bondiburger.jpg" alt="Aussie Beef Burger" />
+            <div class="specials-text">
+                <h1>------------- SPECIAL OFFER -------------</h1>
+                <h2>Aussie Beef Burger</h2>
+                <p>A juicy Australian beef patty stacked with cheddar, crisp lettuce, tomato, and smoky aioli on a toasted brioche bun. Served with golden fries for the perfect bite.</p>
+                <div class="specials-buttons">
+                    <button>LEARN MORE</button>
+                    <button>VIEW MENU</button>
+                </div>
             </div>
         </div>
+
+        <div class="food-items">
+            <div class="food-item">
+                <img src="bondiprawn.png" alt="Prawn Carbonara" />
+                <h3>PRAWN CARBONARA</h3>
+                <p>₱ 454.00</p>
+            </div>
+            <div class="food-item">
+                <img src="bondirisoto.png" alt="Seafood Rosito" />
+                <h3>SEAFOOD ROSITO</h3>
+                <p>₱ 299.00</p>
+            </div>
+            <div class="food-item">
+                <img src="bondivelvet.png" alt="Red Velvet Gateu" />
+                <h3>RED VELVET GATEU</h3>
+                <p>₱ 250.00</p>
+            </div>
+        </div>
+        
+        <section class="food-gallery-section">
+            <h2>FOOD GALLERY</h2>
+            <div class="food-gallery-grid">
+                <img src="bondigallery1.jpg"/>
+                <img src="bondigallery2.jpg">
+                <img src="bondigallery3.jpg">
+                <img src="bondigallery4.jpg">
+                <img src="bondigallery5.jpg">
+                <img src="bondigallery6.jpg">
+                <img src="bondigallery7.jpg">
+                <img src="bondigallery8.jpg">
+                <img src="bondigallery9.jpg">
+            </div>
+        </section>
+    </main>
+
+    <div id="menuOverlay" class="menu-overlay">
+        <span class="close-btn">&times;</span>
+        <img id="menuImage" src="bondimenu1.jpg" alt="Menu Image" />
+        <div class="arrow left">&#10094;</div>
+        <div class="arrow right">&#10095;</div>
     </div>
-  </footer>
-  <div class="credits">
-      <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
-  </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info-footer">
+                115 P. Pelayo Street, Poblacion District<br>
+                Davao City, 8000 Davao del Sur<br>
+                Philippines<br>
+                M: 0998-593-3763<br>
+                E: info@bondibourke.com
+            </div>
+            <div class="social-handles">
+                <div class="social-handle">
+                    <a href="https://www.facebook.com/bondiandbourkedavao" rel="noopener noreferrer">
+                        <img src="facebookLogo.svg" alt="Facebook" class="social-icon">
+                        Bondi&Bourke Davao
+                    </a>
+                </div>
+                <div class="social-handle">
+                    <a href="https://instagram.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="instagramLogo.svg" alt="Instagram" class="social-icon">
+                        @bondibourkeph
+                    </a>
+                </div>
+                <div class="social-handle">
+                    <a href="https://twitter.com/bondibourkeph" rel="noopener noreferrer">
+                        <img src="twitterLogo.svg" alt="Twitter" class="social-icon">
+                        @bondibourkeph
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="credits">
+        <p class="credits-text">© 2025 Bondi&Bourke. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Functionality
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            function toggleMenu() {
+                const isOpening = !mainNav.classList.contains('active');
+                
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                document.body.style.overflow = isOpening ? 'hidden' : '';
+            }
+            
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (mainNav.classList.contains('active') && 
+                    !e.target.closest('.main-nav') && 
+                    !e.target.closest('.mobile-menu-toggle')) {
+                    toggleMenu();
+                }
+            });
+
+            // Menu Overlay Functionality
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuImage = document.getElementById('menuImage');
+            const closeBtn = document.querySelector('.close-btn');
+            const leftArrow = document.querySelector('.arrow.left');
+            const rightArrow = document.querySelector('.arrow.right');
+            const viewMenuBtn = document.querySelector('.specials-buttons button:last-child');
+
+            const images = [
+                'bondimenu1.jpg',
+                'bondimenu2.jpg',
+                'bondimenu3.jpg',
+                'bondimenu5.jpg',
+                'bondimenu6.jpg'
+            ];
+
+            let currentIndex = 0;
+
+            function showImage(index) {
+                menuImage.src = images[index];
+            }
+
+            viewMenuBtn.addEventListener('click', () => {
+                menuOverlay.style.display = 'flex';
+                currentIndex = 0;
+                showImage(currentIndex);
+            });
+
+            closeBtn.addEventListener('click', () => {
+                menuOverlay.style.display = 'none';
+            });
+
+            leftArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            });
+
+            rightArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    menuOverlay.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

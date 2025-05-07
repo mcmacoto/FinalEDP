@@ -160,10 +160,20 @@
 
         /* Main Content */
         main {
+            background: var(--light);
+            width: 100vw;
+            min-width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .main-content {
             max-width: 1440px;
             margin: 0 auto;
             padding: 60px 80px;
-            background: var(--light);
         }
 
         /* Specials Section */
@@ -273,6 +283,9 @@
             padding: 60px 0;
             text-align: center;
             background: var(--dark);
+            width: 100vw;
+            min-width: 100vw;
+            margin-left: calc(-50vw + 50%);
         }
 
         .food-gallery-section h2 {
@@ -299,6 +312,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             padding: 0 60px;
+            max-width: 1440px;
+            margin: 0 auto;
         }
 
         .food-gallery-grid img {
@@ -532,7 +547,7 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
 
-            main {
+            .main-content {
                 padding: 30px 20px;
             }
             
@@ -646,34 +661,36 @@
     </header>
 
     <main>
-        <div class="specials-section">
-            <img src="bondiburger.jpg" alt="Aussie Beef Burger" />
-            <div class="specials-text">
-                <h1>------------- SPECIAL OFFER -------------</h1>
-                <h2>Aussie Beef Burger</h2>
-                <p>A juicy Australian beef patty stacked with cheddar, crisp lettuce, tomato, and smoky aioli on a toasted brioche bun. Served with golden fries for the perfect bite.</p>
-                <div class="specials-buttons">
-                    <button>LEARN MORE</button>
-                    <button>VIEW MENU</button>
+        <div class="main-content">
+            <div class="specials-section">
+                <img src="bondiburger.jpg" alt="Aussie Beef Burger" />
+                <div class="specials-text">
+                    <h1>------------- SPECIAL OFFER -------------</h1>
+                    <h2>Aussie Beef Burger</h2>
+                    <p>A juicy Australian beef patty stacked with cheddar, crisp lettuce, tomato, and smoky aioli on a toasted brioche bun. Served with golden fries for the perfect bite.</p>
+                    <div class="specials-buttons">
+                        <button>LEARN MORE</button>
+                        <button>VIEW MENU</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="food-items">
-            <div class="food-item">
-                <img src="bondiprawn.png" alt="Prawn Carbonara" />
-                <h3>PRAWN CARBONARA</h3>
-                <p>₱ 454.00</p>
-            </div>
-            <div class="food-item">
-                <img src="bondirisoto.png" alt="Seafood Rosito" />
-                <h3>SEAFOOD ROSITO</h3>
-                <p>₱ 299.00</p>
-            </div>
-            <div class="food-item">
-                <img src="bondivelvet.png" alt="Red Velvet Gateu" />
-                <h3>RED VELVET GATEU</h3>
-                <p>₱ 250.00</p>
+            <div class="food-items">
+                <div class="food-item">
+                    <img src="bondiprawn.png" alt="Prawn Carbonara" />
+                    <h3>PRAWN CARBONARA</h3>
+                    <p>₱ 454.00</p>
+                </div>
+                <div class="food-item">
+                    <img src="bondirisoto.png" alt="Seafood Rosito" />
+                    <h3>SEAFOOD ROSITO</h3>
+                    <p>₱ 299.00</p>
+                </div>
+                <div class="food-item">
+                    <img src="bondivelvet.png" alt="Red Velvet Gateu" />
+                    <h3>RED VELVET GATEU</h3>
+                    <p>₱ 250.00</p>
+                </div>
             </div>
         </div>
         

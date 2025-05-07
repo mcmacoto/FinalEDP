@@ -160,18 +160,27 @@
         
         /* Main Content */
         main {
+            background: var(--light);
+            width: 100vw;
+            min-width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .main-content {
             max-width: 1440px;
             margin: 0 auto;
             padding: 60px 80px;
-            position: relative;
-            background: var(--light);
         }
         
         /* Hero Section */
         .hero-section {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-start;
             gap: 60px;
             margin-bottom: 120px;
         }
@@ -296,7 +305,7 @@
             transform: translateY(-5px);
         }
         
-        /* Special Sections */
+        /* Grid Section */
         .grid-4x4 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -372,7 +381,7 @@
             color: white;
             font-size: clamp(0.875rem, 2vw, 1.5rem);
         }
-        
+
         /* Footer */
         footer {
             width: 100vw;
@@ -669,7 +678,7 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
 
-            main {
+            .main-content {
                 padding: 30px 20px;
             }
             
@@ -714,6 +723,11 @@
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(4, 150px);
             }
+            
+            .grid-box {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -735,8 +749,8 @@
             }
             
             .grid-box {
-                font-size: 1.2rem;
-                padding: 10px;
+                font-size: 1rem;
+                height: 120px;
             }
         }
     </style>
@@ -764,55 +778,57 @@
     </header>
     
     <main>
-        <section class="hero-section">
-            <div class="hero-image">
-                <img src="bondibourkemainpeople.jpg" alt="Bondi & Bourke Main Dining Area">
-                <div class="image-caption">Only the best. Since 1963</div>
-            </div>
-            <div class="hero-text">
-                <h1>A Taste of Australia</h1>
-                <p>Aussie comfort food, wine, & small plates served in a chic and airy space complete with a private room fit for every occasion.</p>
-                <div class="reservation-container">
-                    <a href="#" class="reservation-image">
-                        <img src="bondibourketable.jpg" alt="Reservation Area">
-                        <div class="reservation-overlay">
-                            <div class="reservation-text">Reservation</div>
-                        </div>
-                    </a>
+        <div class="main-content">
+            <section class="hero-section">
+                <div class="hero-image">
+                    <img src="bondibourkemainpeople.jpg" alt="Bondi & Bourke Main Dining Area">
+                    <div class="image-caption">Only the best. Since 1963</div>
                 </div>
-            </div>
-        </section>
-        
-        <div id="reservationOverlay" class="reservation-overlay-bg">
-            <form class="reservation-modal" id="reservationForm">
-                <button type="button" class="close-reservation" id="closeReservation" aria-label="Close">&times;</button>
-                <h2>Book a Reservation</h2>
-                <label for="res-name">Name</label>
-                <input type="text" id="res-name" name="name" required autocomplete="off" placeholder="Your Name">
-                <label for="res-email">Email</label>
-                <input type="email" id="res-email" name="email" required autocomplete="off" placeholder="Your Email">
-                <label for="res-date">Date</label>
-                <input type="date" id="res-date" name="date" required>
-                <button type="submit" class="reservation-submit-btn">Submit</button>
-            </form>
-        </div>
-        
-        <section class="boxes-section">
-            <div class="grid-4x4">
-                <div class="grid-box box1" id="upcomingEventsBox">Upcoming Events</div>
-                <div class="grid-box box2"></div>
-                <div class="grid-box box3"></div>
-                <div class="grid-box box4" id="latestNewsBox">Latest News</div>
-            </div>
-        </section>
-
-        <div id="infoPopup" class="popup-overlay">
-            <div class="popup-modal">
-                <button type="button" class="close-popup" id="closePopup" aria-label="Close">&times;</button>
-                <p>There are no new events in a week nor news within the past week from now.</p>
-            </div>
+                <div class="hero-text">
+                    <h1>A Taste of Australia</h1>
+                    <p>Aussie comfort food, wine, & small plates served in a chic and airy space complete with a private room fit for every occasion.</p>
+                    <div class="reservation-container">
+                        <a href="#" class="reservation-image">
+                            <img src="bondibourketable.jpg" alt="Reservation Area">
+                            <div class="reservation-overlay">
+                                <div class="reservation-text">Reservation</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="boxes-section">
+                <div class="grid-4x4">
+                    <div class="grid-box box1" id="upcomingEventsBox">Upcoming Events</div>
+                    <div class="grid-box box2"></div>
+                    <div class="grid-box box3"></div>
+                    <div class="grid-box box4" id="latestNewsBox">Latest News</div>
+                </div>
+            </section>
         </div>
     </main>
+    
+    <div id="reservationOverlay" class="reservation-overlay-bg">
+        <form class="reservation-modal" id="reservationForm">
+            <button type="button" class="close-reservation" id="closeReservation" aria-label="Close">&times;</button>
+            <h2>Book a Reservation</h2>
+            <label for="res-name">Name</label>
+            <input type="text" id="res-name" name="name" required autocomplete="off" placeholder="Your Name">
+            <label for="res-email">Email</label>
+            <input type="email" id="res-email" name="email" required autocomplete="off" placeholder="Your Email">
+            <label for="res-date">Date</label>
+            <input type="date" id="res-date" name="date" required>
+            <button type="submit" class="reservation-submit-btn">Submit</button>
+        </form>
+    </div>
+    
+    <div id="infoPopup" class="popup-overlay">
+        <div class="popup-modal">
+            <button type="button" class="close-popup" id="closePopup" aria-label="Close">&times;</button>
+            <p>There are no new events in a week nor news within the past week from now.</p>
+        </div>
+    </div>
     
     <footer>
         <div class="footer-content">

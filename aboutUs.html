@@ -160,11 +160,20 @@
         
         /* Main Content */
         main {
+            background: var(--light);
+            width: 100vw;
+            min-width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .main-content {
             max-width: 1440px;
             margin: 0 auto;
             padding: 60px 80px;
-            position: relative;
-            background: var(--light);
         }
         
         .section {
@@ -421,7 +430,7 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
 
-            main {
+            .main-content {
                 padding: 30px 20px;
             }
             
@@ -498,29 +507,31 @@
     </header>
     
     <main>
-        <section class="section">
-            <div class="section-image">
-                <img src="bondiTeam.jpg" alt="Bondi & Bourke Staff Picture">
-            </div>
-            <div class="section-content">
-                <h1>Who are we?</h1>
-                <p>At Bondi & Bourke, we offer a modern Australian dining experience led by our award-winning chef, Wade Watson. We take pride in serving a bespoke menu inspired by Australia's favorite dishes in a bright and welcoming space.</p>
-                <p>For more private occasions, our intimate dining rooms accommodate up to 20 guests with full multimedia support. Our signature degustation package delivers a memorable journey through appetizers, mains, desserts, and "the best roast in town," all paired with handpicked wines.</p>
-                <a href="catalog.html" class="btn">DISCOVER OUR MENU</a>
-            </div>
-        </section>
-        
-        <section class="section reverse">
-            <div class="section-image">
-                <img src="wadeWatson.jpg" alt="Award-Winning Chef Wade Watson">
-            </div>
-            <div class="section-content">
-                <h2>About us</h2>
-                <p>Bondi & Bourke offers a modern Australian dining experience led by award-winning Chef Wade Watson. In a bright, welcoming space, we serve a bespoke menu inspired by Aussie favorites.</p>
-                <p>Our private dining rooms host up to 20 guests, ideal for intimate events or corporate functions. Guests can enjoy a signature degustation featuring appetizers, mains, desserts, and "the best roast in town," paired with fine wines.</p>
-                <p>Whether it's business or celebration, Bondi & Bourke is the perfect place to gather.</p>
-            </div>
-        </section>
+        <div class="main-content">
+            <section class="section">
+                <div class="section-image">
+                    <img src="bondiTeam.jpg" alt="Bondi & Bourke Staff Picture">
+                </div>
+                <div class="section-content">
+                    <h1>Who are we?</h1>
+                    <p>At Bondi & Bourke, we offer a modern Australian dining experience led by our award-winning chef, Wade Watson. We take pride in serving a bespoke menu inspired by Australia's favorite dishes in a bright and welcoming space.</p>
+                    <p>For more private occasions, our intimate dining rooms accommodate up to 20 guests with full multimedia support. Our signature degustation package delivers a memorable journey through appetizers, mains, desserts, and "the best roast in town," all paired with handpicked wines.</p>
+                    <a href="catalog.html" class="btn">DISCOVER OUR MENU</a>
+                </div>
+            </section>
+            
+            <section class="section reverse">
+                <div class="section-image">
+                    <img src="wadeWatson.jpg" alt="Award-Winning Chef Wade Watson">
+                </div>
+                <div class="section-content">
+                    <h2>About us</h2>
+                    <p>Bondi & Bourke offers a modern Australian dining experience led by award-winning Chef Wade Watson. In a bright, welcoming space, we serve a bespoke menu inspired by Aussie favorites.</p>
+                    <p>Our private dining rooms host up to 20 guests, ideal for intimate events or corporate functions. Guests can enjoy a signature degustation featuring appetizers, mains, desserts, and "the best roast in town," paired with fine wines.</p>
+                    <p>Whether it's business or celebration, Bondi & Bourke is the perfect place to gather.</p>
+                </div>
+            </section>
+        </div>
     </main>
     
     <footer>

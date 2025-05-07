@@ -159,11 +159,20 @@
         }
         
         main {
+            background: var(--light);
+            width: 100vw;
+            min-width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .main-content {
             max-width: 1440px;
             margin: 0 auto;
             padding: 60px 80px;
-            position: relative;
-            background: var(--light);
         }
         
         .contact-container {
@@ -578,6 +587,7 @@
     </header>
     
     <main>
+        <div class="main-content">
         <div class="contact-container">
             <div class="contact-info">
                 <h2 class="contact-title">GETTING HERE</h2>
@@ -608,6 +618,7 @@
                     <button type="submit" class="submit-btn">SEND</button>
                 </form>
             </div>
+        </div>
         </div>
     </main>
     

@@ -162,11 +162,20 @@
         
         /* Main Content */
         main {
+            background: var(--light);
+            width: 100vw;
+            min-width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .main-content {
             max-width: 1440px;
             margin: 0 auto;
             padding: 60px 80px;
-            position: relative;
-            background: var(--light);
         }
         
         /* FAQ Title */
@@ -600,6 +609,7 @@
     </header>
     
     <main>
+        <div class="main-content">
         <h1 class="faq-title">FREQUENTLY ASKED QUESTIONS</h1>
         
         <div class="faq-container">
@@ -666,6 +676,7 @@
                     <button class="ask-submit" onclick="closeOverlay()">Submit</button>
                 </div>
             </div>
+      </div>
     </main>
 
     <footer>

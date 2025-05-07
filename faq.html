@@ -317,32 +317,8 @@
         
         @media (max-width: 1200px) {
             main {
-                padding: 40px;
+                padding: 24px 8vw;
             }
-            
-            nav {
-                gap: 60px;
-            }
-            
-            nav a {
-                font-size: 24px;
-            }
-            
-            .faq-title {
-                font-size: 48px;
-                line-height: 60px;
-            }
-            
-            .faq-question {
-                font-size: 28px;
-                line-height: 36px;
-            }
-            
-            .faq-answer {
-                font-size: 20px;
-                line-height: 24px;
-            }
-            
             .footer-content {
                 flex-direction: column;
                 padding: 20px;
@@ -359,47 +335,82 @@
                 padding-left: 30px;
                 padding-right: 30px;
             }
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                gap: 30px;
-            }
-            
-            nav a {
-                font-size: 18px;
-            }
-            
             .faq-title {
-                font-size: 36px;
-                line-height: 48px;
+                font-size: 32px;
+                line-height: 40px;
             }
-            
             .faq-question {
-                font-size: 24px;
-                line-height: 30px;
+                font-size: 20px;
+                line-height: 28px;
             }
-            
             .faq-answer {
-                font-size: 18px;
-                line-height: 22px;
+                font-size: 16px;
+                line-height: 20px;
             }
-            
             .faq-item {
-                padding: 20px;
-                padding-left: 70px;
+                padding: 16px;
+                padding-left: 60px;
             }
-            
             .question-icon {
-                left: 15px;
-                top: 25px;
-                width: 35px;
-                height: 35px;
-                font-size: 18px;
+                left: 10px;
+                top: 18px;
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
             }
-            
+            .ask-modal {
+                max-width: 95vw;
+                padding: 20px 10px;
+            }
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 12px 2vw;
+            }
+            nav {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+            nav a {
+                font-size: 16px;
+                padding-bottom: 2px;
+            }
+            .faq-title {
+                font-size: 20px;
+                line-height: 28px;
+            }
+            .faq-question {
+                font-size: 16px;
+                line-height: 20px;
+            }
+            .faq-answer {
+                font-size: 14px;
+                line-height: 18px;
+            }
+            .faq-item {
+                padding: 10px;
+                padding-left: 38px;
+            }
+            .question-icon {
+                left: 4px;
+                top: 8px;
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+            }
             .footer-content {
-                padding: 20px;
+                padding: 10px;
+            }
+            .contact-info-footer,
+            .social-handles {
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 14px;
+            }
+            .ask-modal {
+                max-width: 98vw;
+                padding: 10px 2vw;
+                font-size: 14px;
             }
         }
 

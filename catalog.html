@@ -417,131 +417,95 @@
         
         @media (max-width: 1200px) {
             main {
-                padding: 40px;
+                padding: 24px 8vw;
             }
-            
-            nav {
-                gap: 60px;
-            }
-            
-            nav a {
-                font-size: 24px;
-            }
-            
-            h1 {
-                font-size: 48px;
-                line-height: 60px;
-            }
-            
-            h2 {
-                font-size: 72px;
-                line-height: 90px;
-            }
-            
-            p {
-                font-size: 24px;
-                line-height: 28px;
-            }
-            
-            .btn {
-                width: 350px;
-                height: 70px;
-                font-size: 28px;
-            }
-            
-            .hero-section {
+            .specials-section {
                 flex-direction: column;
+                gap: 20px;
             }
-            
-            .hero-text {
-                padding: 40px 0 0 0;
+            .specials-section img {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
             }
-            
-            .image-caption {
-                font-size: 28px;
-                bottom: 20px;
-                left: 20px;
-            }
-            
-            .reservation-text {
-                font-size: 48px;
-            }
-            
             .footer-content {
                 flex-direction: column;
                 padding: 20px;
                 text-align: center;
             }
-            
             .social-handles {
                 align-items: center;
                 margin-top: 20px;
                 padding-left: 30px;
                 padding-right: 30px;
             }
-            
             .contact-info-footer {
                 text-align: center;
                 padding-left: 30px;
                 padding-right: 30px;
             }
+            .food-gallery-grid {
+                padding: 0 10px;
+                gap: 10px;
+            }
+            .food-gallery-grid img {
+                height: 160px;
+                aspect-ratio: 4/3;
+            }
         }
         
         @media (max-width: 768px) {
+            main {
+                padding: 12px 2vw;
+            }
             nav {
-                gap: 30px;
+                gap: 18px;
+                flex-wrap: wrap;
             }
-            
             nav a {
+                font-size: 16px;
+                padding-bottom: 2px;
+            }
+            .specials-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .specials-section img {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+            }
+            .food-items {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .food-item h3 {
                 font-size: 18px;
             }
-            
-            h1 {
-                font-size: 36px;
-                line-height: 48px;
+            .food-item p {
+                font-size: 16px;
             }
-            
-            h2 {
-                font-size: 48px;
-                line-height: 60px;
-            }
-            
-            p {
-                font-size: 18px;
-                line-height: 22px;
-            }
-            
-            .btn {
-                width: 280px;
-                height: 60px;
-                font-size: 22px;
-            }
-            
-            .image-caption {
+            .food-gallery-section h2 {
                 font-size: 20px;
+                margin-bottom: 20px;
             }
-            
-            .hero-text h1 {
-                font-size: 48px;
-                line-height: 60px;
-            }
-            
-            .hero-description {
-                font-size: 18px;
-            }
-            
-            .reservation-text {
-                font-size: 36px;
-            }
-            
-            .grid-4x4 {
+            .food-gallery-grid {
                 grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 250px);
+                gap: 8px;
+                padding: 0 2vw;
             }
-            
-            .grid-box {
-                height: 250px;
-                font-size: 24px;
+            .food-gallery-grid img {
+                height: 100px;
+                aspect-ratio: 4/3;
+            }
+            .footer-content {
+                padding: 10px;
+            }
+            .contact-info-footer,
+            .social-handles {
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 14px;
             }
         }
 
